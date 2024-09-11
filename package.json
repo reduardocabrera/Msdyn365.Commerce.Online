@@ -47,7 +47,8 @@
     "eslint-plugin-no-null": "^1.0.2",
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-react": "^7.21.5",
-    "typeson": "5.10.1"
+    "typeson": "5.10.1",
+    "fork-ts-checker-webpack-plugin": "^6.0.8"
   },
   "dependencies": {
     "@msdyn365-commerce-modules/starter-pack": "9.50",
