@@ -1,0 +1,126 @@
+{
+  "id": "R1Module1",
+  "config": {
+    "productCollection": {
+      "products": [
+        {
+          "Name": "Wool jacket",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        },
+        {
+          "Name": "Wool jacket 2",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        },
+        {
+          "Name": "Wool jacket 3",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        },
+        {
+          "Name": "Wool jacket 4",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        },
+        {
+          "Name": "Wool jacket 5",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        },
+        {
+          "Name": "Wool jacket 6",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        },
+        {
+          "Name": "Wool jacket 7",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        },
+        {
+          "Name": "Wool jacket 8",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        },
+        {
+          "Name": "Wool jacket 9",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        },
+        {
+          "Name": "Wool jacket 10",
+          "RecordId": 22565429710,
+          "Description": "When the air is feeling crisp, reach for our coats and jackets sourced from the finest materials in the world.",
+          "Price": 299.95,
+          "BasePrice": 299.95,
+          "TotalRatings": 182,
+          "AverageRating": 3.71428571428571,
+          "PrimaryImageUrl": "https://img-prod-cms-mr-microsoft-com.akamaized.net/cms/api/fabrikam/imageFileData/search?fileName=/Products%2F81307_000_001.png"
+        }
+      ]
+    },
+    "imageSettings":{
+      "quality": 80,
+      "lazyload": true,
+      "viewports": {
+        "xs": {
+          "w": 315,
+          "h": 315,
+          "q": "w=315&h=315&q=80&m=6&f=jpg"
+        }
+      }
+    }
+  },
+  "data": {
+    "actionResponse": {
+      "text": "Sample Action Response"
+    }
+  },
+  "typeName": "product-list"
+}
