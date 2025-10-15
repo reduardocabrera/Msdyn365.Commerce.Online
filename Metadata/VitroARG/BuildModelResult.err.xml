@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagnostics
+  GenerationTime="2025-10-10T20:39:05.5416625+00:00">
+  <Items>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>AxMenuExtension/RetailMain.VitroARG/Customers/ARG_NewSalesOrderReport/MenuItemName</Path>
+      <Moniker>MenuItemDisplayDoesNotExist</Moniker>
+      <Message>Menu item display 'ARG_NewSalesOrderReport' does not exist.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>AxSecurityPrivilege/ARG_CSRPrivilegeMaintain/EntryPoints/ARG_NewSalesOrderReport/ObjectName</Path>
+      <Moniker>MenuItemDisplayDoesNotExist</Moniker>
+      <Message>Menu item display 'ARG_NewSalesOrderReport' does not exist.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>AxSecurityPrivilege/ARG_CSRPrivilegeMaintain/EntryPoints/ARG_NewSalesOrderReport/ARG_NewSalesOrderReport/Name</Path>
+      <Moniker>FormDoesNotExist</Moniker>
+      <Message>Form 'ARG_NewSalesOrderReport' does not exist.</Message>
+    </Diagnostic>
+  </Items>
+  <Aliases />
+</Diagnostics>

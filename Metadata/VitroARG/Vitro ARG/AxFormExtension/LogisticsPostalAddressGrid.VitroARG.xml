@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxFormExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V6">
+	<Name>LogisticsPostalAddressGrid.VitroARG</Name>
+	<ControlModifications />
+	<Controls>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControlpy2of5hg1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormStringControl">
+				<Name>DirPartyPostalAddressView_ARGPhone</Name>
+				<Type>String</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<DataField>ARGPhone</DataField>
+				<DataSource>DirPartyPostalAddressView</DataSource>
+			</FormControl>
+			<Parent>AddressGrid</Parent>
+			<PositionType>AfterItem</PositionType>
+			<PreviousSibling>Primary</PreviousSibling>
+		</AxFormExtensionControl>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControlfpqcp4qa1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormStringControl">
+				<Name>DirPartyPostalAddressView_ARGMobile</Name>
+				<Type>String</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<DataField>ARGMobile</DataField>
+				<DataSource>DirPartyPostalAddressView</DataSource>
+			</FormControl>
+			<Parent>AddressGrid</Parent>
+			<PositionType>AfterItem</PositionType>
+			<PreviousSibling>Primary</PreviousSibling>
+		</AxFormExtensionControl>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControlarksiroo1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormStringControl">
+				<Name>DirPartyPostalAddressView_ARGFax</Name>
+				<Type>String</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<DataField>ARGFax</DataField>
+				<DataSource>DirPartyPostalAddressView</DataSource>
+			</FormControl>
+			<Parent>AddressGrid</Parent>
+			<PositionType>AfterItem</PositionType>
+			<PreviousSibling>Primary</PreviousSibling>
+		</AxFormExtensionControl>
+	</Controls>
+	<DataSourceModifications />
+	<DataSourceReferences />
+	<DataSources />
+	<Parts />
+	<PropertyModifications />
+</AxFormExtension>

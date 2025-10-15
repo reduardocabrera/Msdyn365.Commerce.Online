@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagnostics
+  GenerationTime="2025-10-15T00:15:43.5388349+00:00">
+  <Items>
+    <Diagnostic>
+      <DiagnosticType>Generation</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>dynamics://View/ARGPostalCodesEntity</Path>
+      <ElementType>View</ElementType>
+      <Moniker>IsRuntimeServicesMode</Moniker>
+      <Line>0</Line>
+      <Column>0</Column>
+      <Message>Is Runtime Services mode: False</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>dynamics://Class/ARGPostalCodeResponse/Method/parmrsmTutOrderLineClassArray</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>AifCollectionTypeFirstParam</Moniker>
+      <Line>12</Line>
+      <Column>32</Column>
+      <EndLine>12</EndLine>
+      <EndColumn>59</EndColumn>
+      <Message>The first parameter of AifCollectionTypeAttribute must match either a parameter of the method it is defined on or "return".</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxDataEntityView/ARGPostalCodesEntity/Label</Path>
+      <Moniker>DuplicateLabelDetected</Moniker>
+      <Message>Conflicts were detected on the Label property '@SYS9449' for the following entities 'ARGPostalCodesEntity(Vitro ARG), VendVendorEntity(Foundation), VendPaymentBIVendTableV2(Foundation), VendPaymentBIVendTable(Foundation), VendPaymentBIVendorCustomerBalanceEntityV3(Foundation), VendPaymentBIVendorCustomerBalanceEntityV2(Foundation), VendPaymentBIVendorCustomerBalanceEntity(Foundation), VendPaymentBIPaymentsInWorkflow(Foundation), VendPaymentBIInvoicesPaid(Foundation), VendTableBiEntity(BusinessIntelligence), DimAttributeVendTableEntity(Foundation), VendInvoiceAutomationBIVendTable(Foundation), VendPaymentBIInvoicesDue(Foundation)'</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxView/VitroARG_RTATTransactionIdView</Path>
+      <Moniker>ViewWithIndexes</Moniker>
+      <Message>You have added an index to a view, but AX7 views do not support indexing: No index will be added to the view in SQL server. We suggest removing the index.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxView/VitroARG_RTATPONumberView</Path>
+      <Moniker>ViewWithIndexes</Moniker>
+      <Message>You have added an index to a view, but AX7 views do not support indexing: No index will be added to the view in SQL server. We suggest removing the index.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxView/VitroARG_RTATARGOrdSView</Path>
+      <Moniker>ViewWithIndexes</Moniker>
+      <Message>You have added an index to a view, but AX7 views do not support indexing: No index will be added to the view in SQL server. We suggest removing the index.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxView/VitroARG_RTATSAPOrdNView</Path>
+      <Moniker>ViewWithIndexes</Moniker>
+      <Message>You have added an index to a view, but AX7 views do not support indexing: No index will be added to the view in SQL server. We suggest removing the index.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxView/VitroARG_RTATSAPDelIdView</Path>
+      <Moniker>ViewWithIndexes</Moniker>
+      <Message>You have added an index to a view, but AX7 views do not support indexing: No index will be added to the view in SQL server. We suggest removing the index.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxView/VitroARG_RTATOnTimeTNView</Path>
+      <Moniker>ViewWithIndexes</Moniker>
+      <Message>You have added an index to a view, but AX7 views do not support indexing: No index will be added to the view in SQL server. We suggest removing the index.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxView/VitroARG_RTATOnTimeIdView</Path>
+      <Moniker>ViewWithIndexes</Moniker>
+      <Message>You have added an index to a view, but AX7 views do not support indexing: No index will be added to the view in SQL server. We suggest removing the index.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxView/VitroARG_FieldsSalesTableLPView</Path>
+      <Moniker>ViewWithIndexes</Moniker>
+      <Message>You have added an index to a view, but AX7 views do not support indexing: No index will be added to the view in SQL server. We suggest removing the index.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxView/VitroARG_SalesTableView</Path>
+      <Moniker>ViewWithIndexes</Moniker>
+      <Message>You have added an index to a view, but AX7 views do not support indexing: No index will be added to the view in SQL server. We suggest removing the index.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxFormExtension/RetailParameters.VitroARG/Design/Controls/Tab/CustomerordersPage/OrderTab/OrderSearchTabPage</Path>
+      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
+      <Message>'AxFormExtension/RetailParameters.VitroARG/Design/Controls/Tab/CustomerordersPage/OrderTab/OrderSearchTabPage' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>BestPractices</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxFormExtension/RetailParameters.VitroARG/Design/Controls/Tab/CustomerordersPage/OrderTab/DeliveryModePage</Path>
+      <Moniker>BPErrorFormControlPatternUnspecified</Moniker>
+      <Message>'AxFormExtension/RetailParameters.VitroARG/Design/Controls/Tab/CustomerordersPage/OrderTab/DeliveryModePage' has not specified a pattern. Please apply one of the available patterns.</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxSecurityPrivilege/ARG_CustCustomization/DirectAccessPermissions/CustCustomerStaging/Name</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CustCustomerStaging' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxSecurityPrivilege/ARG_CustCustomization/DirectAccessPermissions/CustCustomerV2Staging/Name</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CustCustomerV2Staging' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxSecurityPrivilege/ARG_CustCustomization/DataEntityPermissions/CustCustomerEntity/Name</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CustCustomerEntity' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxSecurityPrivilege/ARG_CustCustomization/DataEntityPermissions/CustCustomerV2Entity/Name</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'CustCustomerV2Entity' is marked as obsolete. </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Metadata</DiagnosticType>
+      <Severity>Warning</Severity>
+      <Path>AxSecurityPrivilege/ARG_SalesCustomization/DataEntityPermissions/SalesOrderHeaderV2Entity/Name</Path>
+      <Moniker>ReferencedObjectIsObsolete</Moniker>
+      <Message>Referenced object 'SalesOrderHeaderV2Entity' is marked as obsolete. </Message>
+    </Diagnostic>
+  </Items>
+  <Aliases />
+</Diagnostics>

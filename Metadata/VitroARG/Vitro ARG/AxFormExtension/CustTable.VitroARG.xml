@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxFormExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V6">
+	<Name>CustTable.VitroARG</Name>
+	<ControlModifications />
+	<Controls>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControljmvliayl1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormButtonGroupControl">
+				<Name>ARGEmail</Name>
+				<Type>ButtonGroup</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<Controls>
+					<AxFormControl xmlns=""
+						i:type="AxFormMenuFunctionButtonControl">
+						<Name>ARGResetPwdBtn</Name>
+						<ConfigurationKey>Retail</ConfigurationKey>
+						<Type>MenuFunctionButton</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<DataSource>CustTable</DataSource>
+						<MenuItemName>ResetPasswordARG</MenuItemName>
+						<MenuItemType>Action</MenuItemType>
+						<NeedsRecord>Yes</NeedsRecord>
+						<Text>@ARGResetPassword:RstPwd004</Text>
+					</AxFormControl>
+				</Controls>
+				<Caption>@ARGResetPassword:RstPwd003</Caption>
+			</FormControl>
+			<Parent>aptabRetail</Parent>
+		</AxFormExtensionControl>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControlcte4nmnh1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormRealControl">
+				<Name>CustTable_ARGAvailableCredit</Name>
+				<AllowEdit>No</AllowEdit>
+				<Type>Real</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<DataField>ARGAvailableCredit</DataField>
+				<DataSource>CustTable</DataSource>
+			</FormControl>
+			<Parent>OtherInformation</Parent>
+		</AxFormExtensionControl>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControlmg00oitb1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormRealControl">
+				<Name>CustTable_ARGCreditLimit</Name>
+				<AllowEdit>No</AllowEdit>
+				<Type>Real</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<DataField>ARGCreditLimit</DataField>
+				<DataSource>CustTable</DataSource>
+			</FormControl>
+			<Parent>OtherInformation</Parent>
+		</AxFormExtensionControl>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControl12gmbiy51</Name>
+			<FormControl xmlns=""
+				i:type="AxFormRealControl">
+				<Name>CustTable_ARGCreditBalance</Name>
+				<AllowEdit>No</AllowEdit>
+				<Type>Real</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<DataField>ARGCreditBalance</DataField>
+				<DataSource>CustTable</DataSource>
+			</FormControl>
+			<Parent>OtherInformation</Parent>
+		</AxFormExtensionControl>
+	</Controls>
+	<DataSourceModifications />
+	<DataSourceReferences />
+	<DataSources />
+	<Parts />
+	<PropertyModifications />
+</AxFormExtension>

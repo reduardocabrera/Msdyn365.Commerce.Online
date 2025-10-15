@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>Vitro ARG</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <DeployOnline>False</DeployOnline>
+    <ProjectGuid>{52c9ca36-84c9-499e-9359-e5e0297090ee}</ProjectGuid>
+    <Name>ARGUSA_SalesOrderRetailAttributes</Name>
+    <RootNamespace>ARGUSA_SalesOrderRetailAttributes</RootNamespace>
+    <StartupType>Class</StartupType>
+    <StartupObject>ARGFullFillSalesTableReportJob</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>True</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>
+    </Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="AxClass\ARGFullFillSalesTableReportJob">
+      <SubType>Content</SubType>
+      <Name>ARGFullFillSalesTableReportJob</Name>
+      <Link>Classes\ARGFullFillSalesTableReportJob</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesOrderReportForm_Extension">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderReportForm_Extension</Name>
+      <Link>Classes\ARGSalesOrderReportForm_Extension</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesOrderTableEventHandler">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderTableEventHandler</Name>
+      <Link>Classes\ARGSalesOrderTableEventHandler</Link>
+    </Content>
+    <Content Include="AxClass\SalesLineTableEventHandler">
+      <SubType>Content</SubType>
+      <Name>SalesLineTableEventHandler</Name>
+      <Link>Classes\SalesLineTableEventHandler</Link>
+    </Content>
+    <Content Include="AxClass\SalesOrderTableEventHandler">
+      <SubType>Content</SubType>
+      <Name>SalesOrderTableEventHandler</Name>
+      <Link>Classes\SalesOrderTableEventHandler</Link>
+    </Content>
+    <Content Include="AxClass\SalesTable_Extension">
+      <SubType>Content</SubType>
+      <Name>SalesTable_Extension</Name>
+      <Link>Classes\SalesTable_Extension</Link>
+    </Content>
+    <Content Include="AxDataEntityView\ARGSalesTableEntity">
+      <SubType>Content</SubType>
+      <Name>ARGSalesTableEntity</Name>
+      <Link>Data Entities\ARGSalesTableEntity</Link>
+    </Content>
+    <Content Include="AxForm\ARGSalesOrderReport">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderReport</Name>
+      <Link>Forms\ARGSalesOrderReport</Link>
+    </Content>
+    <Content Include="AxMenuExtension\AccountsReceivable.VitroARG">
+      <SubType>Content</SubType>
+      <Name>AccountsReceivable.VitroARG</Name>
+      <Link>Menu Extensions\AccountsReceivable.VitroARG</Link>
+    </Content>
+    <Content Include="AxMenuItemDisplay\ARGSalesOrderReport">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderReport</Name>
+      <Link>Display Menu Items\ARGSalesOrderReport</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\ARGSalesTableEntityMaintain">
+      <SubType>Content</SubType>
+      <Name>ARGSalesTableEntityMaintain</Name>
+      <Link>Security Privileges\ARGSalesTableEntityMaintain</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\ARGSalesTableEntityView">
+      <SubType>Content</SubType>
+      <Name>ARGSalesTableEntityView</Name>
+      <Link>Security Privileges\ARGSalesTableEntityView</Link>
+    </Content>
+    <Content Include="AxTable\ARGSalesTable">
+      <SubType>Content</SubType>
+      <Name>ARGSalesTable</Name>
+      <Link>Tables\ARGSalesTable</Link>
+    </Content>
+    <Content Include="AxTable\ARGSalesTableStaging">
+      <SubType>Content</SubType>
+      <Name>ARGSalesTableStaging</Name>
+      <Link>Tables\ARGSalesTableStaging</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="Data Entities\" />
+    <Folder Include="Data Entity Extensions\" />
+    <Folder Include="Display Menu Items\" />
+    <Folder Include="Forms\" />
+    <Folder Include="Menu Extensions\" />
+    <Folder Include="Security Privileges\" />
+    <Folder Include="Table Extensions\" />
+    <Folder Include="Tables\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
+</Project>

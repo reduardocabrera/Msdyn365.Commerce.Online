@@ -1,0 +1,6 @@
+﻿ARGRoles001=Almacenista
+ ;Almacenista
+ARGRoles002=Perfil de actualización de información del cliente
+ ;Perfil de actualización de información del cliente
+ARGRoles003=Perfil de actualización de ordernes de venta
+ ;Perfil de actualización de ordernes de venta

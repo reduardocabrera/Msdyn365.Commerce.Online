@@ -1,0 +1,12 @@
+﻿ARGCPostalAd001=Mobile
+ ;Mobile
+ARGCPostalAd002=Phone
+ ;Phone
+ARGCPostalAd003=Fax
+ ;Fax
+ARGCPostalAd004=Available credit
+ ;Available credit
+ARGCPostalAd005=Credit balance
+ ;Credit balance
+ARGCPostalAd006=Credit limit
+ ;Credit limit

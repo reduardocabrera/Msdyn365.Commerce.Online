@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesOrderSAPFieldsService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGSalesOrderSAPFieldsService
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>updateSalesOrderSAPFields</Name>
+				<Source><![CDATA[
+    public ARGSalesOrderSAPFieldsResponse updateSalesOrderSAPFields(ARGSalesOrderSAPFieldsRequest _request)
+    {
+        var response = new ARGSalesOrderSAPFieldsResponse();
+
+        changecompany(_request.parmDataAreaId())
+        {
+            response = this.updateSOSAPFields(_request.parmARGSalesOrderSAPFieldsClass());
+            return response;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateSOSAPFields</Name>
+				<Source><![CDATA[
+    public ARGSalesOrderSAPFieldsResponse updateSOSAPFields(ARGSalesOrderSAPFieldsClass _argSalesOrderSAPFieldsClass)
+    {
+        ARGSalesOrderSAPFieldsResponse response =  new ARGSalesOrderSAPFieldsResponse();
+        SalesTable salesTable = SalesTable::find(_argSalesOrderSAPFieldsClass.parmSalesId());
+
+    //    try{
+    //        salesTable.selectForUpdate(true);
+    //        salesTable.
+    //}
+        return response;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

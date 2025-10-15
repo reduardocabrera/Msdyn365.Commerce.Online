@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesOrderSAPFieldsRequest</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGSalesOrderSAPFieldsRequest
+{
+    private str dataAreaId;    
+    ARGSalesOrderSAPFieldsClass argSalesOrderSAPFieldsClass;
+    
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmDataAreaId</Name>
+				<Source><![CDATA[
+    [DataMember("DataAreaId")]
+    public str parmDataAreaId(str _value = dataAreaId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            dataAreaId = _value;
+        }
+
+        return dataAreaId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmARGSalesOrderSAPFieldsClass</Name>
+				<Source><![CDATA[
+    [DataMember("ARGSalesOrderSAPFieldsClass")]
+    public ARGSalesOrderSAPFieldsClass parmARGSalesOrderSAPFieldsClass(ARGSalesOrderSAPFieldsClass _argSalesOrderSAPFieldsClass = argSalesOrderSAPFieldsClass)
+    {
+        if (!prmIsDefault(_argSalesOrderSAPFieldsClass))
+        {
+            argSalesOrderSAPFieldsClass = _argSalesOrderSAPFieldsClass;
+        }
+
+        return argSalesOrderSAPFieldsClass;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

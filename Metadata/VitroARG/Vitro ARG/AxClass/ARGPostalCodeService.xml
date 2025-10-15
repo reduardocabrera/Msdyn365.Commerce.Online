@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGPostalCodeService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGPostalCodeService
+{
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>getPostalCodeRecord</Name>
+				<Source><![CDATA[
+    public ARGPostalCodeResponse getPostalCodeRecord(ARGPostalCodeRequest _request)
+    {
+        var response = new ARGPostalCodeResponse();
+
+        changecompany(_request.parmDataAreaId())
+        {
+            response = this.getPostalCode(_request.parmPostalCodeClass());
+            return response;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getPostalCode</Name>
+				<Source><![CDATA[
+    public ARGPostalCodeResponse getPostalCode(ARGPostalCodeClass _postalCodeClass)
+    {
+        ARGPostalCodes postalCodes;
+        ARGPostalCodeResponse response = new ARGPostalCodeResponse();
+
+        try
+        {
+            if (_postalCodeClass.parmPostalCode())
+            {
+                while select postalCodes
+                    where postalCodes.PostalCode == _postalCodeClass.parmPostalCode()
+                {                
+                    if(postalCodes)
+                    {
+                        response.parmSuccess(true);
+                        response.parmDebugMessage("Postal code record");
+                    }
+                }
+            }
+        }
+        catch (Exception::Error)
+        {
+            throw Exception::Error;
+        }
+
+        return response;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>createLine</Name>
+				<Source><![CDATA[
+    public List createLine(ARGPostalCodes _postalCodes)
+    {
+        List lines = new List(Types::Class);
+        ListIterator   literator;
+        ARGPostalCodeLinesClass postalCodeLines;
+
+        postalCodeLines.parmRoute(_postalCodes.Route);
+        postalCodeLines.parmCompany(_postalCodes.Company);
+        postalCodeLines.parmHour(_postalCodes.Hour);
+        postalCodeLines.parmCity(_postalCodes.City);
+        postalCodeLines.parmState(_postalCodes.State);
+        postalCodeLines.parmPostalCode(_postalCodes.PostalCode);
+
+        lines.addEnd(postalCodeLines);
+
+        return lines;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

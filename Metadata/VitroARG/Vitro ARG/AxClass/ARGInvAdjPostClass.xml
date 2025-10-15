@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGInvAdjPostClass</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGInvAdjPostClass
+{
+    private boolean post;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmPost</Name>
+				<Source><![CDATA[
+    [DataMember("Post")]
+    public boolean parmPost(boolean _value = post)
+    {
+        if (!prmIsDefault(_value))
+        {
+            post = _value;
+        }
+
+        return post;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

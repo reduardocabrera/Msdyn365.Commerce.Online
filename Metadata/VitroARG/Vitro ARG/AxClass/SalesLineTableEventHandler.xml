@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SalesLineTableEventHandler</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class SalesLineTableEventHandler
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>SalesLine_Post_insert</Name>
+				<Source><![CDATA[
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="args"></param>
+    [PostHandlerFor(tableStr(SalesLine), tableMethodStr(SalesLine, insert))]
+    public static void SalesLine_Post_insert(XppPrePostArgs args)
+    {
+        SalesLine salesLine = args.getThis() as SalesLine;        
+        ARGSalesTable argSalesTable;
+        SalesTable salesTable = SalesTable::find(salesLine.SalesId);
+
+        select forupdate firstonly argSalesTable
+            where argSalesTable.SalesId == salesLine.SalesId;
+
+        real total = (select firstonly sum(SalesQty) from salesLine
+             where salesLine.SalesId == salesTable.SalesId).SalesQty;
+
+
+        if (salesTable)
+        {
+            ttsbegin;
+            argSalesTable.ItemQuantity = total;
+            argSalesTable.update();
+            ttscommit;
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

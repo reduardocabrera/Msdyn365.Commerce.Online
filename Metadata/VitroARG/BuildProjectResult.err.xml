@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagnostics
+  GenerationTime="2025-10-13T18:11:25.6368165+00:00">
+  <Items>
+    <Diagnostic>
+      <DiagnosticType>Compile</DiagnosticType>
+      <Severity>Error</Severity>
+      <Path>dynamics://Class/SalesLineTableEventHandler/Method/SalesLine_Post_insert</Path>
+      <ElementType>Class Method</ElementType>
+      <Moniker>InvalidQualifier</Moniker>
+      <Line>17</Line>
+      <Column>41</Column>
+      <EndLine>17</EndLine>
+      <EndColumn>46</EndColumn>
+      <Message>The qualifier '_this' is not valid for field 'SalesId'.</Message>
+    </Diagnostic>
+  </Items>
+  <Aliases />
+</Diagnostics>

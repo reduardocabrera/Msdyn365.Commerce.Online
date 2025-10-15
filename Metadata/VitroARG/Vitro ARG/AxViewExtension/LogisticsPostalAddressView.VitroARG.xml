@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxViewExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>LogisticsPostalAddressView.VitroARG</Name>
+	<DataSources />
+	<FieldGroupExtensions />
+	<FieldGroups />
+	<FieldModifications />
+	<Fields>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>ARGFax</Name>
+			<DataField>ARGFax</DataField>
+			<DataSource>LogisticsPostalAddress</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>ARGMobile</Name>
+			<DataField>ARGMobile</DataField>
+			<DataSource>LogisticsPostalAddress</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>ARGPhone</Name>
+			<DataField>ARGPhone</DataField>
+			<DataSource>LogisticsPostalAddress</DataSource>
+		</AxViewField>
+	</Fields>
+	<Mappings />
+	<PropertyModifications />
+	<Ranges />
+</AxViewExtension>

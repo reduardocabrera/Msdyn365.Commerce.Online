@@ -1,0 +1,32 @@
+﻿NSalesOrder001=Total
+ ;Total
+NSalesOrder002=Number of items
+ ;Number of items
+NSalesOrder003=Approval code
+ ;Approval code
+NSalesOrder004=Paytrace Id
+ ;Paytrace Id
+NSalesOrder005=PO Number
+ ;PO Number
+NSalesOrder006=Order status
+ ;Order status
+NSalesOrder007=SAP Order number
+ ;SAP Order number
+NSalesOrder008=SAP Delivery Id
+ ;SAP Delivery Id
+NSalesOrder009=OnTime tracking number
+ ;OnTime tracking number
+NSalesOrder010=OnTime Id
+ ;OnTime Id
+NSalesOrder011=Shipping address
+ ;Shipping address
+NSalesOrder012=Shipping and handling cost
+ ;Shipping and handling cost
+NSalesOrder013=Delivery mode
+ ;Delivery mode
+NSalesOrder014=Payment method
+ ;Payment method
+NSalesOrder015=Placed by
+ ;Placed by
+NSalesOrder016=Sales order report
+ ;Sales order report

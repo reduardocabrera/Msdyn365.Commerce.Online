@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesOrderInvoiceCreateService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGSalesOrderInvoiceCreateService
+{
+    SalesId salesId;
+    SalesFormLetter salesFormLetter;    
+    
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>createSalesOrderInvoice</Name>
+				<Source><![CDATA[
+    public ARGSalesOrderInvoiceCreateResponse createSalesOrderInvoice(ARGSalesOrderInvoiceCreateRequest _request)
+    {            
+        ARGSalesOrderInvoiceCreateResponse response = new ARGSalesOrderInvoiceCreateResponse();
+        SalesTable salesTable;
+        List SAPItemsQtys = new List(Types::String);
+
+
+        changecompany(_request.parmDataAreaId())
+        {
+            salesId = _request.parmSalesOrderInvoiceCreateClass().parmSalesId();
+            salesTable = SalesTable::find(salesId);
+
+            if (salesTable)
+            {
+                try
+                {
+                    SAPItemsQtys = this.createInvoiceLines(_request,salesTable);
+                    if (SAPItemsQtys)
+                    {
+                        response = this.postSalesConfirmation(salesTable);
+                        if (response.parmSuccess())
+                        {
+                            response = this.postSalesPackingSlip(SAPItemsQtys,salesTable);
+                            if (response.parmSuccess())
+                            {
+                                response = this.postSalesInvoice(salesTable);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        response.parmSuccess(false);
+                        response.parmErrorMessage(strFmt("The items does not match any of the %1 sales order lines",salesId));
+                    }
+                }
+
+                catch (Exception::CLRError)
+                {
+                    System.Exception interopException = CLRInterop::getLastException();
+                    response.parmSuccess(false);
+                    response.parmErrorMessage(interopException.ToString());
+                }
+            }
+        }
+       
+        return response;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>createInvoiceLines</Name>
+				<Source><![CDATA[
+    public List createInvoiceLines(ARGSalesOrderInvoiceCreateRequest _request, SalesTable _salesTable)
+    {
+        List lines = new List(Types::String);
+        ListIterator   literator;
+        ARGSalesOrderInvoiceCreateLineClass salesInvoiceLine;
+        SalesLine salesLine;
+        List SAPItemsQtys = new List(Types::String);
+                                 
+        lines = _request.parmsalesOrderInvoiceCreateLineClassArray();
+        if (lines)
+        {
+            literator = new ListIterator(lines);
+            while (literator.more())
+            {
+                salesInvoiceLine = literator.value();
+
+                select salesLine
+                where salesLine.SalesId == salesId
+                join _salesTable
+                where _salesTable.SalesId == salesLine.SalesId && salesLine.ItemId == salesInvoiceLine.parmItemId();
+
+                if (salesLine)
+                {
+                    SAPItemsQtys.addEnd(salesLine.ItemId);
+                    SAPItemsQtys.addEnd(int2Str(salesInvoiceLine.parmQuantity()));
+                }
+                        
+                literator.next();
+            }
+        }        
+        return SAPItemsQtys;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>postSalesConfirmation</Name>
+				<Source><![CDATA[
+    public ARGSalesOrderInvoiceCreateResponse postSalesConfirmation(SalesTable _salesTable)
+    {        
+        ARGSalesOrderInvoiceCreateResponse response = new ARGSalesOrderInvoiceCreateResponse();
+        ARGCustomBatchJobLog errorLog;
+
+        try
+        {
+            ttsbegin;
+            salesFormLetter = SalesFormLetter::construct(DocumentStatus::Confirmation);
+            salesFormLetter.update(_salesTable, systemDateGet(), SalesUpdate::All);
+            ttscommit;
+            response.parmSuccess(true);
+        }
+        catch (Exception::CLRError)
+        {
+            System.Exception interopException = CLRInterop::getLastException();
+            response.parmSuccess(false);
+            response.parmErrorMessage(interopException.ToString());
+            
+            errorLog.clear();
+            errorLog.CreatedByUser = curUserId();
+            errorLog.CreatedDateT = DateTimeUtil::getSystemDateTime();
+            errorLog.LogMessage = "Order Confirmation";
+            errorLog.SalesOrder = _salesTable.SalesId;
+            errorLog.Description =  interopException.ToString();
+            errorLog.insert();
+        }           
+        return response;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>postSalesPackingSlip</Name>
+				<Source><![CDATA[
+    public ARGSalesOrderInvoiceCreateResponse postSalesPackingSlip(List _SAPItemsQtys, SalesTable _salesTable)
+    {
+        ARGSalesOrderInvoiceCreateResponse response = new ARGSalesOrderInvoiceCreateResponse();
+        CustPackingSlipJour custPackingSlipJour;
+        SalesFormLetter_PackingSlip     salesFormLetter_PackingSlip;
+        ListIterator    literator;
+        str sapQtyOfProducts;
+        SalesLine salesLine;
+        ARGCustomBatchJobLog errorLog;
+
+
+        literator = new ListIterator(_SAPItemsQtys);
+        while (literator.more())
+        {
+            sapQtyOfProducts = literator.value();
+
+            select firstonly forupdate salesLine
+            where salesLine.SalesId == _salesTable.SalesId && salesLine.ItemId == sapQtyOfProducts;
+            
+            if (salesLine)
+            {
+                salesLine = SalesLine::find(salesId,salesLine.LineNum,true);
+                literator.next();
+                sapQtyOfProducts = literator.value();
+
+                ttsbegin;
+                salesLine.SalesDeliverNow = str2Int(sapQtyOfProducts);
+                salesLine.setInventDeliverNow();
+                salesLine.update();
+                ttscommit;
+            }
+            literator.next();            
+        }
+
+        try
+        {
+            ttsbegin;
+            salesFormLetter_PackingSlip = SalesFormLetter::construct(DocumentStatus::PackingSlip);
+            salesFormLetter_PackingSlip.update(_salesTable, systemDateGet(), SalesUpdate::DeliverNow, AccountOrder::None, false, false); // Set to true to print the packingslip
+            ttscommit;
+            response.parmSuccess(true);
+        }
+        catch (Exception::CLRError)
+        {
+            System.Exception interopException = CLRInterop::getLastException();
+            response.parmSuccess(false);
+            response.parmErrorMessage(interopException.ToString());
+
+            errorLog.clear();
+            errorLog.CreatedByUser = curUserId();
+            errorLog.CreatedDateT = DateTimeUtil::getSystemDateTime();
+            errorLog.LogMessage = "Packing Slip";
+            errorLog.SalesOrder = _salesTable.SalesId;
+            errorLog.Description =  interopException.ToString();
+            errorLog.insert();
+        }
+        
+        return response;
+        
+        //if (salesFormLetter_PackingSlip.parmJournalRecord().TableId == tableNum(custPackingSlipJour))
+        //{
+        //    custPackingSlipJour = salesFormLetter_PackingSlip.parmJournalRecord();
+        //    //info(custPackingSlipJour.PackingSlipId);
+        //}
+          
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>postSalesInvoice</Name>
+				<Source><![CDATA[
+    public ARGSalesOrderInvoiceCreateResponse postSalesInvoice(SalesTable _salesTable)
+    {
+        ARGSalesOrderInvoiceCreateResponse response = new ARGSalesOrderInvoiceCreateResponse();
+        ARGCustomBatchJobLog errorLog;
+
+        try
+        {
+            ttsbegin;
+            salesFormLetter = SalesFormLetter::construct(DocumentStatus::Invoice);
+            salesFormLetter.update(_salesTable, systemDateGet(), SalesUpdate::PackingSlip);
+            ttscommit;
+
+            response.parmDebugMessage(strFmt("Sales order: %1 has been invoiced",_salesTable.SalesId));
+            response.parmSuccess(true);
+        }
+        catch (Exception::CLRError)
+        {
+            System.Exception interopException = CLRInterop::getLastException();
+            response.parmSuccess(false);
+            response.parmErrorMessage(interopException.ToString());
+
+            errorLog.clear();
+            errorLog.CreatedByUser = curUserId();
+            errorLog.CreatedDateT = DateTimeUtil::getSystemDateTime();
+            errorLog.LogMessage = "Sales Invoice";
+            errorLog.SalesOrder = _salesTable.SalesId;
+            errorLog.Description =  interopException.ToString();
+            errorLog.insert();
+        }
+        
+
+        return response;
+    }
+
+    //public WMSPickingRoute postSalesPickingList()
+    //{
+    //    SalesParmLine               salesParmLine;
+    //    FormletterOutputContract    outputContract;
+    //    WMSPickingRoute             wmsPickingRoute;
+    //    ListIterator                literator;
+    //    Set                         seItemsHQ = new set(Types::String);
+    //    Set                         missingItems;
+    //    SetEnumerator               se;
+    //    str sapItemsData;
+    //    str                         item;
+
+    //    salesFormLetter = SalesFormLetter::construct(DocumentStatus::PickingList);
+
+    //    salesFormLetter.salesTable(salesTable);
+    //    salesFormLetter.initParmSalesTable(salesFormLetter.salesTable());
+    //    salesFormLetter.transDate(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()));
+    //    salesFormLetter.specQty(SalesUpdate::All);
+    //    salesFormLetter.proforma(salesFormLetter.salesParmUpdate().Proforma);
+    //    salesFormLetter.printFormLetter(salesFormLetter.printFormLetter());
+    //    salesFormLetter.printCODLabel(NoYes::No);
+    //    salesFormLetter.printShippingLabel(NoYes::No);
+    //    salesFormLetter.usePrintManagement(false);
+    //    salesFormLetter.creditRemaining(salesFormLetter.creditRemaining());
+
+    //    salesFormLetter.createParmUpdateFromParmUpdateRecord(
+    //    SalesFormletterParmData::initSalesParmUpdateFormletter(
+    //                                    salesFormLetter.documentStatus(),
+    //                                    salesFormLetter.pack(),
+    //                                    true,
+    //                                    false,
+    //                                    false));
+
+    //    salesFormLetter.initParameters(salesFormLetter.salesParmUpdate(),
+    //                                  Printout::Current);
+    //    salesFormLetter.initLinesQuery();
+
+    //    while select forupdate salesParmLine
+    //    where salesParmLine.ParmId == salesFormLetter.parmId() && salesParmLine.OrigSalesId == salesId
+    //    {
+    //        seItemsHQ.add(salesParmLine.InventTransId);
+    //        if (SAPItemsQtys)
+    //        {
+    //            literator = new ListIterator(SAPItemsQtys);
+    //            while (literator.more())
+    //            {   
+    //                sapItemsData = literator.value();
+
+    //                if (SAPItemsData == salesParmLine.InventTransId)
+    //                {   
+
+    //                    literator.next();
+    //                    sapItemsData = literator.value();
+
+    //                    salesParmLine.InventNow = str2Int(sapItemsData);
+    //                    salesParmLine.update();                        
+    //                    break;
+    //                }
+    //                literator.next();
+    //            }
+    //        }
+    //    }
+
+    //    missingItems = Set::difference(seItemsHQ,seSAPItems);
+
+    //    while select forupdate salesParmLine
+    //        where salesParmLine.ParmId == salesFormLetter.parmId() && salesParmLine.OrigSalesId == salesId            
+    //    {
+    //        se = missingItems.getEnumerator();
+    //        while(se.moveNext())
+    //        {
+    //            item = se.current();
+    //            if (item == salesParmLine.InventTransId)
+    //            {
+    //                salesParmLine.delete();
+    //            }
+    //        }
+    //    }
+
+    //    salesFormLetter.run();
+
+    //    outputContract  = salesFormLetter.getOutputContract();
+    //    wmsPickingRoute = outputContract.parmJournal();
+
+    //    return wmsPickingRoute;
+    //}
+
+    //public void postSalesPickinglistRegistration(WMSPickingRoute _pickingRouteID)
+    //{        
+    //    WMSPickingRouteID pickingRouteID = _pickingRouteID.pickingRouteID;    
+
+    //    List list = new List(Types::String);
+    //    list.addEnd(pickingRouteID);
+
+    //    WMSPickingRoute::finishMulti(list.pack());  
+    //}
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

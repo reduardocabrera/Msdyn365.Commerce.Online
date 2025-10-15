@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesAgreeJourPosting</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+class ARGSalesAgreeJourPosting extends RunBaseBatch
+{
+//    QueryRun gQueryRun;
+//    #define.CurrentVersion(1)
+
+//    /// <summary>
+//    /// Construct the class
+//    /// </summary>
+//    /// <returns>Return the class object</returns>
+//    public server static ARGSalesAgreeJourPosting construct()
+//    {
+//        return new ARGSalesAgreeJourPosting();
+//    }
+
+//    /// <summary>
+//    /// </summary>
+//    /// <returns>Return the class desc</returns>
+//    public client server static ClassDescription description()
+//    {
+//        return 'Sales Trade Agreement Posting';
+//    }
+
+//    /// <summary>
+//    /// </summary>
+//    /// <returns>Whether the class can be used in a batch task</returns>
+//    protected boolean canGoBatchJournal()
+//    {
+//        return true;
+//    }
+
+//    /// <summary>
+//    /// <returns></returns>
+//    public container pack()
+//    {
+//        container pack = conNull();
+
+//        if (gQueryRun)
+//        {
+//            pack = gQueryRun.pack();
+//        }
+//        return [#CurrentVersion] + [pack];
+//    }
+
+//    /// <summary>
+//    /// </summary>
+//    /// <param name = “packedClass”></param>
+//    /// <returns></returns>
+//    public boolean unpack(container _packedClass)
+//    {
+//        boolean     ret         = false;
+//        int         version     = RunBase::getVersion(_packedClass);
+//        container   packedQuery = conNull();
+
+//        switch (version)
+//        {
+//            case #CurrentVersion:
+//                [version, packedQuery] = _packedClass;
+
+//                if (SysQuery::isPackedOk(packedQuery))
+//                {
+//                    gQueryRun   = new QueryRun(packedQuery);
+//                    ret         = true;
+//                }
+//                break;
+
+//            default:
+//                ret = false;
+//        }
+//        return ret;
+//    }
+
+//    /// <summary>
+//    /// Allows the class go batch
+//    /// </summary>
+//    /// <returns>Return the result</returns>
+//    public boolean canGoBatch()
+//    {
+//        return true;
+//    }
+
+//    /// <summary>
+//    /// </summary>
+//    /// <returns>Return the true result</returns>
+//    public boolean runsImpersonated()
+//    {
+//        return true;
+//    }
+
+//    /// <summary>
+//    /// Doesn’t allows the class run in the new session
+//    /// </summary>
+//    /// <returns>Return the result</returns>
+//    protected boolean canRunInNewSession()
+//    {
+//        return true;
+//    }
+
+//    /// <summary>
+//    /// </summary>
+//    /// <returns></returns>
+//    public boolean showQueryValues()
+//    {
+//        return true;
+//    }
+
+//    /// <summary>
+//    /// </summary>
+//    /// <returns></returns>
+//    public QueryRun queryRun()
+//    {
+//        return gQueryRun;
+//    }
+
+//    /// <summary>
+//    /// </summary>
+//    public void initQueryRun()
+//    {
+//        Query                   query = new Query();
+//        QueryBuildDataSource    priceDiscAdmTableDS;
+//        QueryBuildRange         priceDiscAdmStatus;
+//        QueryBuildRange         priceDiscAdmId;
+
+//        priceDiscAdmTableDS     = query.addDataSource(tableNum(PriceDiscAdmTable));
+//        priceDiscAdmStatus      = priceDiscAdmTableDS.addRange(fieldNum(PriceDiscAdmTable, Posted));
+//        priceDiscAdmId          = priceDiscAdmTableDS.addRange(fieldNum(PriceDiscAdmTable, JournalNum));
+
+//        gQueryRun = new QueryRun(query);
+//        gQueryRun.saveUserSetup(true);
+//    }
+
+//    /// <summary>
+//    /// </summary>
+//    /// <param name = “_args”>The specified arguments</param>
+//    public static void main(Args _args)
+//    {
+//        ARGSalesAgreeJourPosting    salesAgreeJourPosting = ARGSalesAgreeJourPosting::construct();
+
+//        salesAgreeJourPosting.getLast();
+//        salesAgreeJourPosting.caption();
+//        salesAgreeJourPosting.initQueryRun();
+
+//        if (salesAgreeJourPosting.prompt())
+//        {
+//            salesAgreeJourPosting.run();
+//        }
+//    }
+
+//    /// <summary>
+//    /// Post open inventory journals
+//    /// </summary>
+//    public void run()
+//    {
+//        PriceDiscAdmTable              priceDiscAdmTable;
+
+//        Query query = gQueryRun.query();
+//        while (gQueryRun.next())
+//        {
+//            priceDiscAdmTable    = gQueryRun.get(tableNum(PriceDiscAdmTable));
+
+//            if (priceDiscAdmTable.Posted == NoYes::No)
+//            {
+//                PriceDiscAdmCheckPost   priceDiscAdmCheckPost = new PriceDiscAdmCheckPost(false);//To make sure posting is happen
+
+//                priceDiscAdmCheckPost.initJournalNum(_salesAgreeJourPostClass.parmJournalNum());
+//                try
+//                {
+//                    ttsbegin;
+//                    priceDiscAdmCheckPost.run();
+//                    ttscommit;
+//                }
+//                catch
+//                {
+//                    info(infolog.text());
+//                }
+//            }
+
+//        }
+//    }
+
+}
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+</AxClass>

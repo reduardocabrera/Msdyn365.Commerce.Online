@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxSecurityDuty xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARG_CSRDuty</Name>
+	<Description>@ARGResetPassword:RstPwd004</Description>
+	<Label>@ARGResetPassword:RstPwd004</Label>
+	<Privileges>
+		<AxSecurityPrivilegeReference>
+			<Name>ARG_CSRPrivilegeMaintain</Name>
+		</AxSecurityPrivilegeReference>
+	</Privileges>
+</AxSecurityDuty>

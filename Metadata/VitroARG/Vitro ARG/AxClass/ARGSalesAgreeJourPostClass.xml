@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesAgreeJourPostClass</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGSalesAgreeJourPostClass
+{   
+    private str journalNum;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmJournalNum</Name>
+				<Source><![CDATA[
+    [DataMember("JournalNum")]
+    public str parmJournalNum(str _value = journalNum)
+    {
+        if (!prmIsDefault(_value))
+        {
+            journalNum = _value;
+        }
+
+        return journalNum;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

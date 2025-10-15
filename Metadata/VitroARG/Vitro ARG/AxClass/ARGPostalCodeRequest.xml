@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGPostalCodeRequest</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGPostalCodeRequest
+{
+    private str dataAreaId;
+    ARGPostalCodeClass  postalCodeClass;    
+
+    }
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmDataAreaId</Name>
+				<Source><![CDATA[
+    [DataMember("DataAreaId")]
+    public str parmDataAreaId(str _value = dataAreaId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            dataAreaId = _value;
+        }
+
+        return dataAreaId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmPostalCodeClass</Name>
+				<Source><![CDATA[
+    [DataMember("ARGPostalCodeClass")]
+    public ARGPostalCodeClass parmPostalCodeClass(ARGPostalCodeClass _postalCodeClass = postalCodeClass)
+    {
+        if (!prmIsDefault(_postalCodeClass))
+        {
+            postalCodeClass = _postalCodeClass;
+        }
+
+        return postalCodeClass;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

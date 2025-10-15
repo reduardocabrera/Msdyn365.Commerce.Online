@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesAgreeJourUpdateClass</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGSalesAgreeJourUpdateClass
+{
+    private str itemId;
+    private str customerAccount;
+    private str groupId;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmItemId</Name>
+				<Source><![CDATA[
+    [DataMember("ItemId")]
+    public str parmItemId(str _value = itemId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            itemId = _value;
+        }
+
+        return itemId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCustomerAccount</Name>
+				<Source><![CDATA[
+    [DataMember("CustomerAccount")]
+    public str parmCustomerAccount(str _value = customerAccount)
+    {
+        if (!prmIsDefault(_value))
+        {
+            customerAccount = _value;
+        }
+
+        return customerAccount;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmGroupId</Name>
+				<Source><![CDATA[
+    [DataMember("GroupId")]
+    public str parmGroupId(str _value = groupId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            groupId = _value;
+        }
+
+        return groupId;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

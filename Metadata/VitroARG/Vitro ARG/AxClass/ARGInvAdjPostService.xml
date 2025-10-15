@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGInvAdjPostService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGInvAdjPostService
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>postInventoryAdjustment</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Method for posting a sales trade agreement
+    /// </summary>
+    /// <param name = "_request"></param>
+    /// <returns></returns>
+    public ARGInvAdjPostResponse postInventoryAdjustment(ARGInvAdjPostRequest _request)
+    {
+        var response = new ARGInvAdjPostResponse();
+
+        changecompany(_request.parmDataAreaId())
+        {
+            response = this.postInvAdj(_request.parmInvAdjPostClass());
+            return response;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>postInvAdj</Name>
+				<Source><![CDATA[
+    public ARGInvAdjPostResponse postInvAdj(ARGInvAdjPostClass _invAdjPostClass)
+    {
+        InventJournalTable  inventJournalTable;
+        JournalCheckPost    journalCheckPost;
+        ARGInvAdjPostResponse response = new ARGInvAdjPostResponse();
+        str errorMsg;
+        ARGCustomBatchJobLog customBatchJobLog;
+       
+        try
+        {
+            if (_invAdjPostClass.parmPost())
+            {
+                while select inventJournalTable
+            where inventJournalTable.Posted == NoYes::No
+                {
+                    journalCheckPost = InventJournalCheckPost::newPostJournal(inventJournalTable);
+                    journalCheckPost.parmThrowCheckFailed(false);
+                    journalCheckPost.parmTransferErrors(NoYes::Yes);                    
+
+                    if (journalCheckPost.validate())
+                    {
+                        journalCheckPost.run();
+            
+                        response.parmSuccess(true);
+                        response.parmDebugMessage("Inventory Adjustments successfully posted");
+                    }
+                }
+                if (inventJournalTable.RecId == 0)
+                {
+                    if(response.parmDebugMessage() == '')
+                    {
+                        response.parmDebugMessage("There's no inventory adjustments to be posted");
+                    }
+                }
+            }
+        }
+
+        catch (Exception::UpdateConflict)
+        {
+            throw Exception::UpdateConflict;
+        }
+        catch (Exception::CLRError)
+        {
+            throw Exception::CLRError;
+        }
+        catch
+        {
+            response.parmSuccess(false);
+            response.parmErrorMessage(strFmt(this.getErrorStr()));
+
+            errorMsg = this.getErrorStr();
+            response.parmSuccess(false);
+            response.parmErrorMessage(errorMsg);
+
+            customBatchJobLog.clear();
+            customBatchJobLog.LogMessage = errorMsg;
+            customBatchJobLog.Description = "Inventory Adjustments posting";
+            customBatchJobLog.insert();
+        }
+        return response;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getErrorStr</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Method to capture the standard error and send it the perticular catch of the method.
+    /// </summary>
+    /// <returns>error</returns>
+    public str getErrorStr()
+    {
+        SysInfologEnumerator    enumerator;
+        SysInfologMessageStruct msgStruct;
+        Exception               exception;
+        str                     error;
+
+        enumerator = SysInfologEnumerator::newData(infolog.cut());
+
+        while (enumerator.moveNext())
+        {
+            msgStruct = new SysInfologMessageStruct(enumerator.currentMessage());
+            exception = enumerator.currentException();
+            error = strfmt("@SYS82282"+ ' '+"@MCR26302", error, msgStruct.message());
+        }
+
+        return error;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

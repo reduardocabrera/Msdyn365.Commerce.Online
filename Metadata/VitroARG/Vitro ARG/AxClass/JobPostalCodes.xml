@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>JobPostalCodes</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+Using System.IO;
+Using OfficeOpenXml;
+Using OfficeOpenXml.ExcelPackage;
+Using OfficeOpenXml.ExcelRange;
+internal final class JobPostalCodes
+{
+
+        /// <summary>
+        /// Runs the class with the specified arguments.
+        /// </summary>
+        /// <param name = "_args">The specified arguments.</param>
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        ARGPostalCodes  postalCodes;
+        RecordInsertList    postalCodesList = new RecordInsertList(tableNum(ARGPostalCodes));
+        System.IO.Stream stream;
+        ExcelSpreadsheetName sheet;
+        FileUploadBuild fileUpload,fileUploadBuild;
+        DialogGroup dialogUploadGroup;
+
+        FormBuildControl formBuildControl;
+
+        Dialog dialog=new Dialog("Postal Codes Excel Import");
+
+        dialogUploadGroup=dialog.addGroup("@SYS54759");
+        formBuildControl=dialog.formBuildDesign().control(dialogUploadGroup.name());
+        fileUploadBuild=formBuildControl.addControlEx(classStr(fileUpload),"UploadExcel");
+        fileUploadBuild.style(FileUploadStyle::MinimalWithFilename);
+        fileUploadBuild.fileTypesAccepted(".xlsx");
+
+        if(dialog.run() && dialog.closedOk())
+        {
+            FileUpload fileUploadControl=dialog.formRun().control(dialog.formRun().controlId("Upload"));
+
+            FileUploadTemporaryStorageResult
+                fileUploadResult=file::GetFileFromUser(classStr(FileUploadTemporaryStorageStrategy));
+
+            //fileUploadResult=fileUploadControl.getFileUploadResult();
+            if(fileUploadResult!= null && fileUploadResult.getUploadStatus())
+            {
+                stream=fileUploadResult.openResult();
+
+                using(ExcelPackage  package= new ExcelPackage(stream))
+                {
+                    ttsbegin;
+                    int rowCount, iterator;
+                    package.Load(stream);
+                    ExcelWorksheet worksheet= package.get_workbook().get_worksheets().get_Item(1);
+                    OfficeOpenXml.ExcelRange range=worksheet.Cells;
+
+                    rowCount = worksheet.Dimension.End.Row - worksheet.Dimension.Start.Row + 1;
+
+                    for(iterator=2;iterator<=rowCount;iterator++)
+                    {
+                        postalCodes.Route      = range.get_Item(iterator,1).Value;
+                        postalCodes.Company    = range.get_Item(iterator,2).Value;
+                        postalCodes.Hour       = str2Int(range.get_Item(iterator,3).Value);
+                        postalCodes.City       = range.get_Item(iterator,4).Value;
+                        postalCodes.State      = range.get_Item(iterator,5).Value;
+                        postalCodes.PostalCode = str2Int(range.get_Item(iterator,6).Value);
+                        postalCodes.insert();
+                    }
+                    ttscommit;
+                }
+                Info("Insertion done");
+            }           
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

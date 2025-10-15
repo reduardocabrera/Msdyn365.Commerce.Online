@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxService xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesAgreeJourUpdateService</Name>
+	<Class>ARGSalesAgreeJourUpdateService</Class>
+	<ExternalName>ARGSalesAgreeJourUpdateService</ExternalName>
+	<ServiceOperations>
+		<AxServiceOperation>
+			<Name>updateSalesAgreementByCustomer</Name>
+			<Method>updateSalesAgreementByCustomer</Method>
+			<SubscriberAccessLevel>
+				<Read>Allow</Read>
+			</SubscriberAccessLevel>
+		</AxServiceOperation>
+		<AxServiceOperation>
+			<Name>updateSalesAgreementByGroup</Name>
+			<Method>updateSalesAgreementByGroup</Method>
+			<SubscriberAccessLevel>
+				<Read>Allow</Read>
+			</SubscriberAccessLevel>
+		</AxServiceOperation>
+	</ServiceOperations>
+</AxService>

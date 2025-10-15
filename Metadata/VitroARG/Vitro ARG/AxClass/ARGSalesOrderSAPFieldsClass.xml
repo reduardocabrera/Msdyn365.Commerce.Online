@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesOrderSAPFieldsClass</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGSalesOrderSAPFieldsClass
+{
+    private str salesId;
+    private str onTimeId;
+    private str onTimeTrackNum;
+    private str sapDeliveryId;
+    private str sapOrderNum;
+    private str argOrderStatus;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmSalesId</Name>
+				<Source><![CDATA[
+    [DataMember("SalesId")]
+    public str parmSalesId(str _value = salesId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            salesId = _value;
+        }
+
+        return salesId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmOnTimeId</Name>
+				<Source><![CDATA[
+    [DataMember("OnTimeId")]
+    public str parmOnTimeId(str _value = onTimeId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            onTimeId = _value;
+        }
+
+        return onTimeId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmOnTimeTrackNum</Name>
+				<Source><![CDATA[
+    [DataMember("OnTimeTrackNum")]
+    public str parmOnTimeTrackNum(str _value = onTimeTrackNum)
+    {
+        if (!prmIsDefault(_value))
+        {
+            onTimeTrackNum = _value;
+        }
+
+        return onTimeTrackNum;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmSapDeliveryId</Name>
+				<Source><![CDATA[
+    [DataMember("SapDeliveryId")]
+    public str parmSapDeliveryId(str _value = sapDeliveryId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            sapDeliveryId = _value;
+        }
+
+        return sapDeliveryId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmSapOrderNum</Name>
+				<Source><![CDATA[
+    [DataMember("SapOrderNum")]
+    public str parmSapOrderNum(str _value = sapOrderNum)
+    {
+        if (!prmIsDefault(_value))
+        {
+            sapOrderNum = _value;
+        }
+
+        return sapOrderNum;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmArgOrderStatus</Name>
+				<Source><![CDATA[
+    [DataMember("ArgOrderStatus")]
+    public str parmArgOrderStatus(str _value = argOrderStatus)
+    {
+        if (!prmIsDefault(_value))
+        {
+            argOrderStatus = _value;
+        }
+
+        return argOrderStatus;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

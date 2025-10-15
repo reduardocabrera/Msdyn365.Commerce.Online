@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Diagnostics
+  GenerationTime="2025-10-15T00:15:48.0115648+00:00">
+  <Items>
+    <Diagnostic>
+      <DiagnosticType>VisualStudioIntegration</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>K:\AosService\PackagesLocalDirectory\bin\labelc.exe</Path>
+      <Moniker>K:\AosService\PackagesLocalDirectory\bin\labelc.exe -metadata="K:\AosService\PackagesLocalDirectory" -output="K:\AosService\PackagesLocalDirectory\VitroARG\Resources" -modelmodule="VitroARG" </Moniker>
+      <Message>K:\AosService\PackagesLocalDirectory\bin\labelc.exe -metadata="K:\AosService\PackagesLocalDirectory" -output="K:\AosService\PackagesLocalDirectory\VitroARG\Resources" -modelmodule="VitroARG" </Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Starting label compilation...</Moniker>
+      <Message>Starting label compilation...</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>- Module name    </Moniker>
+      <Message>VitroARG</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>- Metadata path  </Moniker>
+      <Message>K:\AosService\PackagesLocalDirectory\</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>- Output path    </Moniker>
+      <Message>K:\AosService\PackagesLocalDirectory\VitroARG\Resources\</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>- Maximum DoP    </Moniker>
+      <Message>0 (Logical Processors: 8)</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling Primary Resource file for ARGCustomerPostalAddress</Moniker>
+      <Message>Compiling Primary Resource file for ARGCustomerPostalAddress</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling Primary Resource file for ARG_ShippingCostDisplay_EC</Moniker>
+      <Message>Compiling Primary Resource file for ARG_ShippingCostDisplay_EC</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling Primary Resource file for ARGResetPassword</Moniker>
+      <Message>Compiling Primary Resource file for ARGResetPassword</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling Primary Resource file for ARG_Roles</Moniker>
+      <Message>Compiling Primary Resource file for ARG_Roles</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling Primary Resource file for ARG_NewSalesOrderLabel</Moniker>
+      <Message>Compiling Primary Resource file for ARG_NewSalesOrderLabel</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling Primary Resource file for ARGCustomerReportLabels</Moniker>
+      <Message>Compiling Primary Resource file for ARGCustomerReportLabels</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling Primary Resource file for CustomProductsFlowARGLabel</Moniker>
+      <Message>Compiling Primary Resource file for CustomProductsFlowARGLabel</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating Primary resource assembly for ARGCustomerPostalAddress</Moniker>
+      <Message>Generating Primary resource assembly for ARGCustomerPostalAddress</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating Primary resource assembly for ARGCustomerReportLabels</Moniker>
+      <Message>Generating Primary resource assembly for ARGCustomerReportLabels</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating Primary resource assembly for ARGResetPassword</Moniker>
+      <Message>Generating Primary resource assembly for ARGResetPassword</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating Primary resource assembly for ARG_NewSalesOrderLabel</Moniker>
+      <Message>Generating Primary resource assembly for ARG_NewSalesOrderLabel</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating Primary resource assembly for ARG_Roles</Moniker>
+      <Message>Generating Primary resource assembly for ARG_Roles</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating Primary resource assembly for ARG_ShippingCostDisplay_EC</Moniker>
+      <Message>Generating Primary resource assembly for ARG_ShippingCostDisplay_EC</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating Primary resource assembly for CustomProductsFlowARGLabel</Moniker>
+      <Message>Generating Primary resource assembly for CustomProductsFlowARGLabel</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARGCustomerPostalAddress for language en-US</Moniker>
+      <Message>Compiling label file ARGCustomerPostalAddress for language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARGCustomerPostalAddress for language es-MX</Moniker>
+      <Message>Compiling label file ARGCustomerPostalAddress for language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARGCustomerReportLabels for language en-US</Moniker>
+      <Message>Compiling label file ARGCustomerReportLabels for language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARGCustomerReportLabels for language es-MX</Moniker>
+      <Message>Compiling label file ARGCustomerReportLabels for language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARGResetPassword for language en-US</Moniker>
+      <Message>Compiling label file ARGResetPassword for language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARGResetPassword for language es-MX</Moniker>
+      <Message>Compiling label file ARGResetPassword for language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARG_NewSalesOrderLabel for language en-US</Moniker>
+      <Message>Compiling label file ARG_NewSalesOrderLabel for language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARG_NewSalesOrderLabel for language es-MX</Moniker>
+      <Message>Compiling label file ARG_NewSalesOrderLabel for language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARG_Roles for language en-US</Moniker>
+      <Message>Compiling label file ARG_Roles for language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARG_Roles for language es-MX</Moniker>
+      <Message>Compiling label file ARG_Roles for language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARG_ShippingCostDisplay_EC for language es-MX</Moniker>
+      <Message>Compiling label file ARG_ShippingCostDisplay_EC for language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file ARG_ShippingCostDisplay_EC for language en-US</Moniker>
+      <Message>Compiling label file ARG_ShippingCostDisplay_EC for language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file CustomProductsFlowARGLabel for language en-US</Moniker>
+      <Message>Compiling label file CustomProductsFlowARGLabel for language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Compiling label file CustomProductsFlowARGLabel for language es-MX</Moniker>
+      <Message>Compiling label file CustomProductsFlowARGLabel for language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARGCustomerPostalAddress, language en-US</Moniker>
+      <Message>Generating satellite resource assembly for label file ARGCustomerPostalAddress, language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARG_NewSalesOrderLabel, language es-MX</Moniker>
+      <Message>Generating satellite resource assembly for label file ARG_NewSalesOrderLabel, language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARGResetPassword, language es-MX</Moniker>
+      <Message>Generating satellite resource assembly for label file ARGResetPassword, language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARGCustomerPostalAddress, language es-MX</Moniker>
+      <Message>Generating satellite resource assembly for label file ARGCustomerPostalAddress, language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARGCustomerReportLabels, language en-US</Moniker>
+      <Message>Generating satellite resource assembly for label file ARGCustomerReportLabels, language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARGResetPassword, language en-US</Moniker>
+      <Message>Generating satellite resource assembly for label file ARGResetPassword, language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARG_NewSalesOrderLabel, language en-US</Moniker>
+      <Message>Generating satellite resource assembly for label file ARG_NewSalesOrderLabel, language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARGCustomerReportLabels, language es-MX</Moniker>
+      <Message>Generating satellite resource assembly for label file ARGCustomerReportLabels, language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARG_Roles, language en-US</Moniker>
+      <Message>Generating satellite resource assembly for label file ARG_Roles, language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARG_Roles, language es-MX</Moniker>
+      <Message>Generating satellite resource assembly for label file ARG_Roles, language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARG_ShippingCostDisplay_EC, language en-US</Moniker>
+      <Message>Generating satellite resource assembly for label file ARG_ShippingCostDisplay_EC, language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file ARG_ShippingCostDisplay_EC, language es-MX</Moniker>
+      <Message>Generating satellite resource assembly for label file ARG_ShippingCostDisplay_EC, language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file CustomProductsFlowARGLabel, language en-US</Moniker>
+      <Message>Generating satellite resource assembly for label file CustomProductsFlowARGLabel, language en-US</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Generating satellite resource assembly for label file CustomProductsFlowARGLabel, language es-MX</Moniker>
+      <Message>Generating satellite resource assembly for label file CustomProductsFlowARGLabel, language es-MX</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Done compiling 14 label files!</Moniker>
+      <Message>Done compiling 14 label files!</Message>
+    </Diagnostic>
+    <Diagnostic>
+      <DiagnosticType>Unspecified</DiagnosticType>
+      <Severity>Informational</Severity>
+      <Path>labelc.exe</Path>
+      <Moniker>Completed label compilation in 2 seconds with exit code 0.</Moniker>
+      <Message>Completed label compilation in 2 seconds with exit code 0.</Message>
+    </Diagnostic>
+  </Items>
+  <Aliases />
+</Diagnostics>

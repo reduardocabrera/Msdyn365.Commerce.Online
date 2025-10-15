@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxView xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>VitroARG_SalesTableView</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class VitroARG_SalesTableView extends common
+{
+}
+
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+	<SubscriberAccessLevel>
+		<Read>Allow</Read>
+	</SubscriberAccessLevel>
+	<FieldGroups>
+		<AxTableFieldGroup>
+			<Name>AutoReport</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoLookup</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoIdentification</Name>
+			<AutoPopulate>Yes</AutoPopulate>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoSummary</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoBrowse</Name>
+			<Fields />
+		</AxTableFieldGroup>
+	</FieldGroups>
+	<Fields>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>SalesId</Name>
+			<DataField>SalesId</DataField>
+			<DataSource>SalesTable</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>Txt</Name>
+			<DataField>Txt</DataField>
+			<DataSource>DlvMode</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>Value</Name>
+			<DataField>Value</DataField>
+			<DataSource>MarkupAutoLine</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>InventLocationId</Name>
+			<DataField>InventLocationId</DataField>
+			<DataSource>SalesTable</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>Address</Name>
+			<DataField>Address</DataField>
+			<DataSource>LogisticsPostalAddress</DataSource>
+		</AxViewField>
+	</Fields>
+	<Indexes>
+		<AxViewIndex>
+			<Name>Main</Name>
+			<Fields>
+				<AxViewIndexField>
+					<DataField>SalesId</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>Txt</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>Value</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>InventLocationId</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>Address</DataField>
+				</AxViewIndexField>
+			</Fields>
+		</AxViewIndex>
+	</Indexes>
+	<Mappings />
+	<Relations />
+	<StateMachines />
+	<ViewMetadata>
+		<Name>Metadata</Name>
+		<SourceCode>
+			<Methods />
+		</SourceCode>
+		<DataSources>
+			<AxQuerySimpleRootDataSource>
+				<Name>SalesTable</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<Table>SalesTable</Table>
+				<DataSources>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>DlvMode</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>DlvMode</Table>
+						<DataSources>
+							<AxQuerySimpleEmbeddedDataSource>
+								<Name>MarkupAutoTable</Name>
+								<DynamicFields>Yes</DynamicFields>
+								<Table>MarkupAutoTable</Table>
+								<DataSources>
+									<AxQuerySimpleEmbeddedDataSource>
+										<Name>MarkupAutoLine</Name>
+										<DynamicFields>Yes</DynamicFields>
+										<Table>MarkupAutoLine</Table>
+										<DataSources />
+										<DerivedDataSources />
+										<Fields />
+										<Ranges />
+										<Relations>
+											<AxQuerySimpleDataSourceRelation>
+												<Name>QueryDataSourceRelation1</Name>
+												<Field>RecId</Field>
+												<JoinDataSource>MarkupAutoTable</JoinDataSource>
+												<RelatedField>TableRecId</RelatedField>
+											</AxQuerySimpleDataSourceRelation>
+											<AxQuerySimpleDataSourceRelation>
+												<Name>QueryDataSourceRelation2</Name>
+												<Field>TableId</Field>
+												<JoinDataSource>MarkupAutoTable</JoinDataSource>
+												<RelatedField>TableTableId</RelatedField>
+											</AxQuerySimpleDataSourceRelation>
+										</Relations>
+									</AxQuerySimpleEmbeddedDataSource>
+								</DataSources>
+								<DerivedDataSources />
+								<Fields />
+								<Ranges>
+									<AxQuerySimpleDataSourceRange>
+										<Name>DlvModeCode</Name>
+										<Field>DlvModeCode</Field>
+										<Value>0</Value>
+									</AxQuerySimpleDataSourceRange>
+								</Ranges>
+								<Relations>
+									<AxQuerySimpleDataSourceRelation>
+										<Name>QueryDataSourceRelation1</Name>
+										<Field>Code</Field>
+										<JoinDataSource>DlvMode</JoinDataSource>
+										<RelatedField>DlvModeRelation</RelatedField>
+									</AxQuerySimpleDataSourceRelation>
+								</Relations>
+							</AxQuerySimpleEmbeddedDataSource>
+						</DataSources>
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>DlvMode</Field>
+								<JoinDataSource>SalesTable</JoinDataSource>
+								<RelatedField>Code</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>LogisticsPostalAddress</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>LogisticsPostalAddress</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>DeliveryPostalAddress</Field>
+								<JoinDataSource>SalesTable</JoinDataSource>
+								<RelatedField>RecId</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+				</DataSources>
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<GroupBy />
+				<Having />
+				<OrderBy />
+			</AxQuerySimpleRootDataSource>
+		</DataSources>
+	</ViewMetadata>
+</AxView>

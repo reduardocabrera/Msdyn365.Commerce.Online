@@ -1,0 +1,6 @@
+﻿ARGRoles001=Warehouseman
+ ;Warehouseman
+ARGRoles002=Customer Information Update Profile
+ ;Customer Information Update Profile
+ARGRoles003=Sales order update profile
+ ;Sales order update profile

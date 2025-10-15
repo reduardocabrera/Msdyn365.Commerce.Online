@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGFullFillSalesTableReportJob</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGFullFillSalesTableReportJob
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        SalesTable          salesTable;
+        ARGSalesTable       argSalesTable;       
+        RecordInsertList    recordInsertList;
+        int recordsInserted;
+    
+        recordInsertList = new RecordInsertList(argSalesTable.TableId);
+        while select salesTable
+        {
+            argSalesTable.clear();
+            argSalesTable.SalesId = salesTable.SalesId;
+            argSalesTable.PlacedBy = SalesTable_Extension::PlacedBy(salesTable);
+            argSalesTable.PaymnMethod = SalesTable_Extension::PaymnMethod(salesTable);
+            argSalesTable.DlvMode = SalesTable_Extension::DlvMode(salesTable);
+            argSalesTable.ShippingCost = SalesTable_Extension::ShippingCost(salesTable);
+            argSalesTable.ShippingAddress = SalesTable_Extension::ShippingAddress(salesTable);
+            argSalesTable.TotalAmount = SalesTable_Extension::SalesOrderTotal(salesTable);
+            argSalesTable.ItemQuantity = SalesTable_Extension::ItemQuantityTotals(salesTable);            
+            recordInsertList.add(argSalesTable);
+            break;
+        }
+        recordsInserted = recordInsertList.insertDatabase();
+        info(strFmt("Registros de SalesTable agregados a ARGSalesTable: %1",recordsInserted));
+        
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

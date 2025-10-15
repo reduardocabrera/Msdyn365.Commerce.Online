@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxDataEntityViewExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>DirPartyLocationPostalAddressV2Entity.VitroARG</Name>
+	<DataSources />
+	<FieldGroupExtensions />
+	<FieldGroups />
+	<FieldModifications />
+	<Fields>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>ARGMobile</Name>
+			<DataField>ARGMobile</DataField>
+			<DataSource>LogisticsPostalAddressBaseEntity</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>ARGPhone</Name>
+			<DataField>ARGPhone</DataField>
+			<DataSource>LogisticsPostalAddressBaseEntity</DataSource>
+		</AxDataEntityViewField>
+		<AxDataEntityViewField xmlns=""
+			i:type="AxDataEntityViewMappedField">
+			<Name>ARGFax</Name>
+			<DataField>ARGFax</DataField>
+			<DataSource>LogisticsPostalAddressBaseEntity</DataSource>
+		</AxDataEntityViewField>
+	</Fields>
+	<Mappings />
+	<PropertyModifications />
+	<Relations />
+</AxDataEntityViewExtension>

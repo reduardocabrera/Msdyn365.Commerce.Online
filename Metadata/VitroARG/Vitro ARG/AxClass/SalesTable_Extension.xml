@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SalesTable_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public static class SalesTable_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>PaymnMethod</Name>
+				<Source><![CDATA[
+    //[SysClientCacheDataMethodAttribute(true)]
+    public static str PaymnMethod(SalesTable _this)
+    {       
+        changecompany(curExt())
+        {
+            str result;
+            //RetailChannelTable retailChannelTable;
+
+            //select firstonly retailChannelTable
+            //where _this.RetailChannelTable == retailChannelTable.RecId;
+
+            //if (!retailChannelTable)
+            //{
+                switch (_this.PaymMode)
+                {
+                    case "":
+                        result = "CustAcco";
+                        break;
+                    case "Cash":
+                        result = "CreditCard";
+                        break;
+                    case "CustAcco":
+                        result = "CustAcco";
+                        break;
+                    case "CreditCard":
+                        result = "CreditCard";
+                        break;                   
+                }
+            //}
+        
+            return result;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>PlacedBy</Name>
+				<Source><![CDATA[
+    //[SysClientCacheDataMethodAttribute(true)]
+    public static str PlacedBy(SalesTable _this)
+    {   
+        changecompany(curExt())
+        {
+            HcmWorker worker;
+            worker = HcmWorker::find(_this.WorkerSalesTaker);
+
+            DirPerson   dirPerson;
+
+            select firstonly NameAlias from dirPerson where dirPerson.RecId == worker.Person;       
+
+            if (!dirPerson.NameAlias)
+            {
+                return 'Website';
+            }
+            else
+            {
+                return dirPerson.NameAlias;
+            }
+        }
+        
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>SalesOrderTotal</Name>
+				<Source><![CDATA[
+    [SysClientCacheDataMethodAttribute(true)]
+    public static real SalesOrderTotal(SalesTable _this)
+    {
+        changecompany(curExt())
+        {
+            SalesTotals salesTotals;
+            salesTotals = SalesTotals::construct(_this, SalesUpdate::All);
+            salesTotals.calc();
+            
+            AmountCur totalAmount;
+            totalAmount = salesTotals.totalAmount();        
+        
+            return totalAmount;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>ItemQuantityTotals</Name>
+				<Source><![CDATA[
+    //[SysClientCacheDataMethodAttribute(true)]
+    public static real ItemQuantityTotals(SalesTable _this)
+    {   
+        SalesLine salesLine;
+        changecompany(curExt())
+        {
+            real total = (select sum(SalesQty) from salesLine
+            where salesLine.SalesId == _this.SalesId).SalesQty;
+        
+            return total;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>ShippingAddress</Name>
+				<Source><![CDATA[
+    //[SysClientCacheDataMethodAttribute(true)]
+    public static Description ShippingAddress(SalesTable _this)
+    {   
+        changecompany(curExt())
+        {
+            return _this.deliveryAddress().Address; //SalesTable.deliveryAddress().Address;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>ShippingCost</Name>
+				<Source><![CDATA[
+    //[SysClientCacheDataMethodAttribute(true)]
+    public static real ShippingCost(SalesTable _this)
+    {
+        changecompany(curExt())
+        {
+            MarkupAutoTable markupAutoTable;
+            MarkupAutoLine  markupAutoLine;
+            DlvMode         dlvMode;
+
+            select dlvMode
+                where _this.DlvMode == dlvMode.Code;
+
+            select firstonly markupAutoLine
+                where markupAutoLine.MarkupCode == dlvMode.MarkupGroup;
+
+            return markupAutoLine.Value;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>DlvMode</Name>
+				<Source><![CDATA[
+    //[SysClientCacheDataMethodAttribute(true)]
+    public static Description DlvMode(SalesTable _this)
+    {         
+        changecompany(curExt())
+        {
+            DlvMode         dlvMode;            
+    
+            select dlvMode
+                where _this.DlvMode == dlvMode.Code;        
+        
+            return dlvMode.Txt;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>PaytraceId</Name>
+				<Source><![CDATA[
+    [SysClientCacheDataMethodAttribute(true)]
+    public static AttributeValueText PaytraceId(SalesTable _this)
+    {
+        RetailTransactionAttributeTrans retailTransAttrTrans;
+        RetailTransactionTable          retailTransTable;
+        changecompany(curExt())
+        {
+            SalesTable salesTable = SalesTable::find(_this.SalesId);
+
+
+            select retailTransAttrTrans
+            join retailTransTable
+            where retailTransTable.transactionId == retailTransAttrTrans.transactionId &&
+                    retailTransAttrTrans.Name == 'Paytrace id' &&
+                    retailTransTable.salesOrderId == salesTable.SalesId;
+            
+            AttributeValueText transactionId = retailTransAttrTrans.TextValue;
+        
+            return transactionId;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>ApprovalCode</Name>
+				<Source><![CDATA[
+    [SysClientCacheDataMethodAttribute(true)]
+    public static AttributeValueText ApprovalCode(SalesTable _this)
+    {
+        RetailTransactionAttributeTrans retailTransAttrTrans;
+        RetailTransactionTable          retailTransTable;
+
+        changecompany(curExt())
+        {
+            SalesTable salesTable = SalesTable::find(_this.SalesId);
+
+
+            select retailTransAttrTrans
+            join retailTransTable
+            where retailTransTable.transactionId == retailTransAttrTrans.transactionId &&
+                    retailTransAttrTrans.Name == 'Approval code' &&
+                    retailTransTable.salesOrderId == salesTable.SalesId;
+            
+            AttributeValueText transactionId = retailTransAttrTrans.TextValue;
+        
+            return transactionId;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>OnTimeId</Name>
+				<Source><![CDATA[
+    [SysClientCacheDataMethodAttribute(true)]
+    public static AttributeValueText OnTimeId(SalesTable _this)
+    {
+        RetailTransactionAttributeTrans retailTransAttrTrans;
+        RetailTransactionTable          retailTransTable;    
+
+        changecompany(curExt())
+        {
+            SalesTable salesTable = SalesTable::find(_this.SalesId);
+    
+
+            select retailTransAttrTrans
+            join retailTransTable
+            where retailTransTable.transactionId == retailTransAttrTrans.transactionId &&
+                    retailTransAttrTrans.Name == 'OnTime id' &&
+                    retailTransTable.salesOrderId == salesTable.SalesId;
+            
+            AttributeValueText onTimeId = retailTransAttrTrans.TextValue;
+        
+
+            return onTimeId;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>OnTimeTrackingNumber</Name>
+				<Source><![CDATA[
+    [SysClientCacheDataMethodAttribute(true)]
+    public static AttributeValueText OnTimeTrackingNumber(SalesTable _this)
+    {
+        RetailTransactionAttributeTrans retailTransAttrTrans;
+        RetailTransactionTable          retailTransTable;
+
+        changecompany(curExt())
+        {
+            SalesTable salesTable = SalesTable::find(_this.SalesId);
+
+
+            select retailTransAttrTrans
+            join retailTransTable
+            where retailTransTable.transactionId == retailTransAttrTrans.transactionId &&
+                    retailTransAttrTrans.Name == 'OnTime tracking number' &&
+                    retailTransTable.salesOrderId == salesTable.SalesId;
+            
+            AttributeValueText onTimeTrackingNumber = retailTransAttrTrans.TextValue;
+        
+
+            return onTimeTrackingNumber;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>SapDeliveryId</Name>
+				<Source><![CDATA[
+    [SysClientCacheDataMethodAttribute(true)]
+    public static AttributeValueText SapDeliveryId(SalesTable _this)
+    {
+        RetailTransactionAttributeTrans retailTransAttrTrans;
+        RetailTransactionTable          retailTransTable;
+
+        changecompany(curExt())
+        {
+            SalesTable salesTable = SalesTable::find(_this.SalesId);
+
+            select retailTransAttrTrans
+            join retailTransTable
+            where retailTransTable.transactionId == retailTransAttrTrans.transactionId &&
+                    retailTransAttrTrans.Name == 'SAP delivery id' &&
+                    retailTransTable.salesOrderId == salesTable.SalesId;
+            
+            AttributeValueText sapDeliveryId = retailTransAttrTrans.TextValue;
+        
+
+            return sapDeliveryId;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>SapOrderNumber</Name>
+				<Source><![CDATA[
+    [SysClientCacheDataMethodAttribute(true)]
+    public static AttributeValueText SapOrderNumber(SalesTable _this)
+    {
+        RetailTransactionAttributeTrans retailTransAttrTrans;
+        RetailTransactionTable          retailTransTable;
+
+        changecompany(curExt())
+        {
+            SalesTable salesTable = SalesTable::find(_this.SalesId);
+
+            select retailTransAttrTrans
+            join retailTransTable
+            where retailTransTable.transactionId == retailTransAttrTrans.transactionId &&
+                    retailTransAttrTrans.Name == 'SAP order number' &&
+                    retailTransTable.salesOrderId == salesTable.SalesId;
+            
+            AttributeValueText sapOrderNumber = retailTransAttrTrans.TextValue;
+        
+
+            return sapOrderNumber;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>ARGOrderStatus</Name>
+				<Source><![CDATA[
+    [SysClientCacheDataMethodAttribute(true)]
+    public static AttributeValueText ARGOrderStatus(SalesTable _this)
+    {
+        RetailTransactionAttributeTrans retailTransAttrTrans;
+        RetailTransactionTable          retailTransTable;
+        
+        changecompany(curExt())
+        {
+            SalesTable salesTable = SalesTable::find(_this.SalesId);
+
+            select retailTransAttrTrans
+            join retailTransTable
+            where retailTransTable.transactionId == retailTransAttrTrans.transactionId &&
+                    retailTransAttrTrans.Name == 'ARG order status' &&
+                    retailTransTable.salesOrderId == salesTable.SalesId;
+            
+            AttributeValueText argOrderStatus = retailTransAttrTrans.TextValue;
+        
+
+            return argOrderStatus;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>PONumber</Name>
+				<Source><![CDATA[
+    [SysClientCacheDataMethodAttribute(true)]
+    public static AttributeValueText PONumber(SalesTable _this)
+    {
+        RetailTransactionAttributeTrans retailTransAttrTrans;
+        RetailTransactionTable          retailTransTable;
+
+        changecompany(curExt())
+        {
+            SalesTable salesTable = SalesTable::find(_this.SalesId);
+
+            select retailTransAttrTrans
+            join retailTransTable
+            where retailTransTable.transactionId == retailTransAttrTrans.transactionId &&
+                    retailTransAttrTrans.Name == 'PO number' &&
+                    retailTransTable.salesOrderId == salesTable.SalesId;
+            
+            AttributeValueText poNumber = retailTransAttrTrans.TextValue;        
+
+            return poNumber;
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35208.52
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FC65038C-1B2F-41E1-A629-BED71D161FFF}") = "ARG_Roles_EC (CUS) [Vitro ARG]", "ARG_Roles_EC.rnrproj", "{C3F39F09-8D3F-4153-95FF-CEA4B624B960}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3F39F09-8D3F-4153-95FF-CEA4B624B960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F39F09-8D3F-4153-95FF-CEA4B624B960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1CB8241B-91DC-4826-BFB7-B48AB0C59747}
+	EndGlobalSection
+EndGlobal

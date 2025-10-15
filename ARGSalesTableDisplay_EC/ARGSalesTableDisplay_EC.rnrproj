@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>Vitro ARG</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <DeployOnline>False</DeployOnline>
+    <ProjectGuid>{88850cc1-1604-4557-a3b6-49ff227daeff}</ProjectGuid>
+    <Name>ARGSalesTableDisplay_EC</Name>
+    <RootNamespace>ARGSalesTableDisplay_EC</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>True</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>
+    </Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="Form Extensions\" />
+    <Folder Include="Label Files\" />
+    <Folder Include="Table Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ARG_ShippingCostDisplay_EC.en-US.label.txt">
+      <SubType>Content</SubType>
+      <Name>ARG_ShippingCostDisplay_EC.en-US.label.txt</Name>
+      <DependentUpon>AxLabelFile\ARG_ShippingCostDisplay_EC_en-US</DependentUpon>
+    </Content>
+    <Content Include="ARG_ShippingCostDisplay_EC.es-MX.label.txt">
+      <SubType>Content</SubType>
+      <Name>ARG_ShippingCostDisplay_EC.es-MX.label.txt</Name>
+      <DependentUpon>AxLabelFile\ARG_ShippingCostDisplay_EC_es-MX</DependentUpon>
+    </Content>
+    <Content Include="AxClass\SalesTable_Extension">
+      <SubType>Content</SubType>
+      <Name>SalesTable_Extension</Name>
+      <Link>Classes\SalesTable_Extension</Link>
+    </Content>
+    <Content Include="AxFormExtension\CustParameters.VitroARG">
+      <SubType>Content</SubType>
+      <Name>CustParameters.VitroARG</Name>
+      <Link>Form Extensions\CustParameters.VitroARG</Link>
+    </Content>
+    <Content Include="AxLabelFile\ARG_ShippingCostDisplay_EC_en-US">
+      <SubType>Content</SubType>
+      <Name>ARG_ShippingCostDisplay_EC_en-US</Name>
+      <Link>Label Files\ARG_ShippingCostDisplay_EC_en-US</Link>
+    </Content>
+    <Content Include="AxLabelFile\ARG_ShippingCostDisplay_EC_es-MX">
+      <SubType>Content</SubType>
+      <Name>ARG_ShippingCostDisplay_EC_es-MX</Name>
+      <Link>Label Files\ARG_ShippingCostDisplay_EC_es-MX</Link>
+    </Content>
+    <Content Include="AxTableExtension\SalesParameters.VitroARG">
+      <SubType>Content</SubType>
+      <Name>SalesParameters.VitroARG</Name>
+      <Link>Table Extensions\SalesParameters.VitroARG</Link>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
+</Project>

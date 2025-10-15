@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxService xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesOrderInvoiceCreateService</Name>
+	<Class>ARGSalesOrderInvoiceCreateService</Class>
+	<ExternalName>ARGSalesOrderInvoiceCreateService</ExternalName>
+	<ServiceOperations>
+		<AxServiceOperation>
+			<Name>createSalesOrderInvoice</Name>
+			<Method>createSalesOrderInvoice</Method>
+			<SubscriberAccessLevel>
+				<Read>Allow</Read>
+			</SubscriberAccessLevel>
+		</AxServiceOperation>
+	</ServiceOperations>
+</AxService>

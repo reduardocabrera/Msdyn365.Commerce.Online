@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGTestProratedJob</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGTestProratedJob
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        SalesTable salesTable = SalesTable::find("013405");
+
+        SalesLine salesLine;
+
+        MarkupTransInsertParameters parameters = MarkupTransInsertParameters::construct();
+        
+        MarkupTransInsert markupTransInsert = MarkupTransInsert::construct();
+
+        select sum(SalesQty) from salesLine
+            where salesLine.SalesId == salesTable.SalesId
+                && salesLine.SalesStatus != SalesStatus::Canceled;
+        
+        parameters.initFromSalesTable(salesTable);
+
+        parameters.TotalAmount                              = salesLine.SalesQty;        
+        parameters.DeleteExistingMarkupTrans                = NoYes::Yes;
+        parameters.ModuleType                               = MarkupModuleType::Cust;
+        //parameters.IsForRetailOrderWithAdvancedAutoCharges  = NoYes::Yes; 013402 No usar
+        parameters.ShouldDoRetailChargeProration            = NoYes::Yes; 
+        
+        markupTransInsert.insert(parameters);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

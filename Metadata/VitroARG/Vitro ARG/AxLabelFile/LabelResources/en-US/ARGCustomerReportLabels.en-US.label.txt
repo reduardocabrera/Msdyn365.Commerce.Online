@@ -1,0 +1,10 @@
+﻿VitroARG001=SAP Customer ID
+ ;SAP Customer ID
+VitroARG002=Price group
+ ;Price group
+VitroARG003=SAP Customer Report
+ ;SAP Customer Report
+VitroARG004=Email
+ ;Email
+VitroARG005=Phone
+ ;Phone

@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxView xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>VitroARG_FieldsSalesTableLPView</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class VitroARG_FieldsSalesTableLPView extends common
+{
+}
+
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+	<SubscriberAccessLevel>
+		<Read>Allow</Read>
+	</SubscriberAccessLevel>
+	<FieldGroups>
+		<AxTableFieldGroup>
+			<Name>AutoReport</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoLookup</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoIdentification</Name>
+			<AutoPopulate>Yes</AutoPopulate>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoSummary</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoBrowse</Name>
+			<Fields />
+		</AxTableFieldGroup>
+	</FieldGroups>
+	<Fields>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>SalesId</Name>
+			<DataField>SalesId</DataField>
+			<DataSource>VitroARG_SalesTableView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>Address</Name>
+			<DataField>Address</DataField>
+			<DataSource>VitroARG_SalesTableView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>InventLocationId</Name>
+			<DataField>InventLocationId</DataField>
+			<DataSource>VitroARG_SalesTableView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>Txt</Name>
+			<DataField>Txt</DataField>
+			<DataSource>VitroARG_SalesTableView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>Value</Name>
+			<DataField>Value</DataField>
+			<DataSource>VitroARG_SalesTableView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>TransactionId</Name>
+			<DataField>Name</DataField>
+			<DataSource>VitroARG_RTATTransactionIdView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>SAPOrderNumber</Name>
+			<DataField>Name</DataField>
+			<DataSource>VitroARG_RTATSAPOrdNView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>SAPDeliveryId</Name>
+			<DataField>Name</DataField>
+			<DataSource>VitroARG_RTATSAPDelIdView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>PONumber</Name>
+			<DataField>Name</DataField>
+			<DataSource>VitroARG_RTATPONumberView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>OnTimeTrackingNumber</Name>
+			<DataField>Name</DataField>
+			<DataSource>VitroARG_RTATOnTimeTNView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>OnTimeId</Name>
+			<DataField>Name</DataField>
+			<DataSource>VitroARG_RTATOnTimeIdView</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>ARGOrderStatus</Name>
+			<DataField>Name</DataField>
+			<DataSource>VitroARG_RTATARGOrdSView</DataSource>
+		</AxViewField>
+	</Fields>
+	<Indexes>
+		<AxViewIndex>
+			<Name>Main</Name>
+			<Fields>
+				<AxViewIndexField>
+					<DataField>SalesId</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>Address</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>InventLocationId</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>Txt</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>Value</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>TransactionId</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>SAPOrderNumber</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>SAPDeliveryId</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>PONumber</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>OnTimeTrackingNumber</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>OnTimeId</DataField>
+				</AxViewIndexField>
+				<AxViewIndexField>
+					<DataField>ARGOrderStatus</DataField>
+				</AxViewIndexField>
+			</Fields>
+		</AxViewIndex>
+	</Indexes>
+	<Mappings />
+	<Relations />
+	<StateMachines />
+	<ViewMetadata>
+		<Name>Metadata</Name>
+		<SourceCode>
+			<Methods />
+		</SourceCode>
+		<DataSources>
+			<AxQuerySimpleRootDataSource>
+				<Name>VitroARG_SalesTableView</Name>
+				<DynamicFields>Yes</DynamicFields>
+				<Table>VitroARG_SalesTableView</Table>
+				<DataSources>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>VitroARG_RTATTransactionIdView</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>VitroARG_RTATTransactionIdView</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>SalesId</Field>
+								<JoinDataSource>VitroARG_SalesTableView</JoinDataSource>
+								<RelatedField>salesOrderId</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>VitroARG_RTATSAPOrdNView</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>VitroARG_RTATSAPOrdNView</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>SalesId</Field>
+								<JoinDataSource>VitroARG_SalesTableView</JoinDataSource>
+								<RelatedField>salesOrderId</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>VitroARG_RTATSAPDelIdView</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>VitroARG_RTATSAPDelIdView</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>salesId</Field>
+								<JoinDataSource>VitroARG_SalesTableView</JoinDataSource>
+								<RelatedField>salesOrderId</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>VitroARG_RTATPONumberView</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>VitroARG_RTATPONumberView</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>SalesId</Field>
+								<JoinDataSource>VitroARG_SalesTableView</JoinDataSource>
+								<RelatedField>salesOrderId</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>VitroARG_RTATOnTimeTNView</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>VitroARG_RTATOnTimeTNView</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>SalesId</Field>
+								<JoinDataSource>VitroARG_SalesTableView</JoinDataSource>
+								<RelatedField>SalesOrderId</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>VitroARG_RTATOnTimeIdView</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>VitroARG_RTATOnTimeIdView</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>salesId</Field>
+								<JoinDataSource>VitroARG_SalesTableView</JoinDataSource>
+								<RelatedField>SalesOrderId</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+					<AxQuerySimpleEmbeddedDataSource>
+						<Name>VitroARG_RTATARGOrdSView</Name>
+						<DynamicFields>Yes</DynamicFields>
+						<Table>VitroARG_RTATARGOrdSView</Table>
+						<DataSources />
+						<DerivedDataSources />
+						<Fields />
+						<Ranges />
+						<Relations>
+							<AxQuerySimpleDataSourceRelation>
+								<Name>QueryDataSourceRelation1</Name>
+								<Field>SalesId</Field>
+								<JoinDataSource>VitroARG_SalesTableView</JoinDataSource>
+								<RelatedField>SalesOrderId</RelatedField>
+							</AxQuerySimpleDataSourceRelation>
+						</Relations>
+					</AxQuerySimpleEmbeddedDataSource>
+				</DataSources>
+				<DerivedDataSources />
+				<Fields />
+				<Ranges />
+				<GroupBy />
+				<Having />
+				<OrderBy />
+			</AxQuerySimpleRootDataSource>
+		</DataSources>
+	</ViewMetadata>
+</AxView>

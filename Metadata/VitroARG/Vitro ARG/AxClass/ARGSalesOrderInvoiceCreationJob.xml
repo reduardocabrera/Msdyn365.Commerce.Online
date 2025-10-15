@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesOrderInvoiceCreationJob</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGSalesOrderInvoiceCreationJob
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        SalesId salesId = '013626';
+        SalesFormLetter salesFormLetter;
+        SalesTable salesTable;
+        List SAPItemsQtys = new List(Types::String);
+        ARGCustomBatchJobLog errorLog;
+        
+        List lines = new List(Types::String);
+        ListIterator   literator;
+        str salesInvoiceLine;
+        SalesLine salesLine;
+        CustPackingSlipJour custPackingSlipJour;
+        SalesFormLetter_PackingSlip     salesFormLetter_PackingSlip;
+            
+        str sapQtyOfProducts;
+
+
+        changecompany('usrt')
+        {
+            
+            salesTable = SalesTable::find(salesId);
+            
+            
+            lines.addEnd("0162999");
+            lines.addEnd("0163999");
+            lines.addEnd("0164999");
+
+            
+            if (lines)
+            {
+                literator = new ListIterator(lines);
+                while (literator.more())
+                {
+                    salesInvoiceLine = literator.value();
+
+                    select salesLine
+                    where salesLine.SalesId == salesId
+                    join salesTable
+                    where salesTable.SalesId == salesLine.SalesId && salesLine.ItemId == salesInvoiceLine;
+
+                    SAPItemsQtys.addEnd(salesLine.ItemId);
+                    SAPItemsQtys.addEnd(int2Str(2));
+                        
+                    literator.next();
+                }
+            }
+            
+
+            try
+            {
+                ttsbegin;
+                salesFormLetter = SalesFormLetter::construct(DocumentStatus::Confirmation);
+                salesFormLetter.update(salesTable, systemDateGet(), SalesUpdate::All);
+                ttscommit;
+               
+            }
+            catch (Exception::CLRError)
+            {
+                System.Exception interopException = CLRInterop::getLastException();
+                
+                errorLog.CreatedByUser = curUserId();
+                errorLog.CreatedDateT = DateTimeUtil::getSystemDateTime();
+                errorLog.LogMessage = "Order Confirmation";
+                errorLog.SalesOrder = salesTable.SalesId;
+                errorLog.Description =  interopException.ToString();
+                errorLog.insert();
+            }
+            
+           
+
+            if (SAPItemsQtys)
+            {
+                literator = new ListIterator(SAPItemsQtys);
+                while (literator.more())
+                {
+                    sapQtyOfProducts = literator.value();
+
+                    select firstonly forupdate salesLine
+                where salesLine.SalesId == salesTable.SalesId && salesLine.ItemId == sapQtyOfProducts;
+            
+                    if (salesLine)
+                    {
+                        salesLine = SalesLine::find(salesId,salesLine.LineNum,true);
+                        literator.next();
+                        sapQtyOfProducts = literator.value();
+
+                        ttsbegin;
+
+                        salesLine.SalesDeliverNow = str2Int(sapQtyOfProducts);
+                        salesLine.setInventDeliverNow();
+                        salesLine.update();
+                        ttscommit;
+                    }
+                    literator.next();
+                }
+
+                try
+                {
+                    ttsbegin;
+                    salesFormLetter_PackingSlip = SalesFormLetter::construct(DocumentStatus::PackingSlip);
+                    salesFormLetter_PackingSlip.update(salesTable, systemDateGet(), SalesUpdate::DeliverNow, AccountOrder::None, false, false); // Set to true to print the packingslip
+                    ttscommit;
+                }
+                catch (Exception::CLRError)
+                {
+                    System.Exception interopException = CLRInterop::getLastException();
+               
+                    errorLog.CreatedByUser = curUserId();
+                    errorLog.CreatedDateT = DateTimeUtil::getSystemDateTime();
+                    errorLog.LogMessage = "Packing Slip";
+                    errorLog.SalesOrder = salesTable.SalesId;
+                    errorLog.Description =  interopException.ToString();
+                    errorLog.insert();
+                }
+        
+           
+
+                try
+                {
+                    ttsbegin;
+                    salesFormLetter = SalesFormLetter::construct(DocumentStatus::Invoice);
+                    salesFormLetter.update(salesTable, systemDateGet(), SalesUpdate::PackingSlip);
+                    ttscommit;
+
+                    info(strFmt("Sales order: %1 has been invoiced",salesTable.SalesId));
+                }
+                catch (Exception::CLRError)
+                {
+                    System.Exception interopException = CLRInterop::getLastException();
+                
+                    errorLog.CreatedByUser = curUserId();
+                    errorLog.CreatedDateT = DateTimeUtil::getSystemDateTime();
+                    errorLog.LogMessage = "Sales Invoice";
+                    errorLog.SalesOrder = salesTable.SalesId;
+                    errorLog.Description =  interopException.ToString();
+                    errorLog.insert();
+                }
+            }
+            else
+            {
+                info(strFmt("The items does not match any of the %1 sales order lines",salesId));
+            }
+        }
+
+       
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

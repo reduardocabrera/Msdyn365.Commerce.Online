@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesLineTableEventHanlder</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGSalesLineTableEventHanlder
+{
+    
+    ///// <summary>
+    /////
+    ///// </summary>
+    ///// <param name="sender"></param>
+    ///// <param name="e"></param>
+    //[DataEventHandler(tableStr(SalesLine), DataEventType::Inserted)]
+    //public static void SalesLine_onInserted(Common sender, DataEventArgs e)
+    //{
+    //    SalesLine salesLine = sender as SalesLine;
+    //    SalesTable salesTable;
+    //    RetailChannelTable retailChannelTable;
+    //    InventTable inventTable;
+
+    //    select firstonly salesTable
+    //        where salesTable.SalesId == salesLine.SalesId;
+
+    //        ttsbegin;
+    //        if (salesTable)
+    //        {
+    //            salesLine.selectForUpdate(true);
+    //            salesLine.ARGCreatedDateTime = salesTable.CreatedDateTime;
+    //            salesLine.CustomerRef = "OnInserted";
+
+    //            inventTable = InventTable::find(salesLine.ItemId, false);
+    //            salesLine.ARGNags = subStr(inventTable.NameAlias,1,10);
+    //            salesLine.update();
+    //        }           
+    //        ttscommit;
+    //}
+
+}
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+</AxClass>

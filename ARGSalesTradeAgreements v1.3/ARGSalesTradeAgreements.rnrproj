@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>Vitro ARG</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <DeployOnline>False</DeployOnline>
+    <ProjectGuid>{56ebde40-e3d8-448d-a3cc-8c617aa441df}</ProjectGuid>
+    <Name>ARGSalesTradeAgreements</Name>
+    <RootNamespace>ARGSalesTradeAgreements</RootNamespace>
+    <StartupObject>
+    </StartupObject>
+    <StartupType>
+    </StartupType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>False</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>
+    </Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="AxClass\ARGSalesAgreeJourPostClass">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourPostClass</Name>
+      <Link>PostAgreeJournal\ARGSalesAgreeJourPostClass</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesAgreeJourPostRequest">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourPostRequest</Name>
+      <Link>PostAgreeJournal\ARGSalesAgreeJourPostRequest</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesAgreeJourPostResponse">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourPostResponse</Name>
+      <Link>PostAgreeJournal\ARGSalesAgreeJourPostResponse</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesAgreeJourPostService">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourPostService</Name>
+      <Link>PostAgreeJournal\ARGSalesAgreeJourPostService</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesAgreeJourUpdateClass">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourUpdateClass</Name>
+      <Link>UpdateAgreeJournals\ARGSalesAgreeJourUpdateClass</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesAgreeJourUpdateRequest">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourUpdateRequest</Name>
+      <Link>UpdateAgreeJournals\ARGSalesAgreeJourUpdateRequest</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesAgreeJourUpdateResponse">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourUpdateResponse</Name>
+      <Link>UpdateAgreeJournals\ARGSalesAgreeJourUpdateResponse</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesAgreeJourUpdateService">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourUpdateService</Name>
+      <Link>UpdateAgreeJournals\ARGSalesAgreeJourUpdateService</Link>
+    </Content>
+    <Content Include="AxServiceGroup\ARGSalesAgreeJourPostServiceGroup">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourPostServiceGroup</Name>
+      <Link>Service Groups\ARGSalesAgreeJourPostServiceGroup</Link>
+    </Content>
+    <Content Include="AxServiceGroup\ARGSalesAgreeJourUpdateServiceGroup">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourUpdateServiceGroup</Name>
+      <Link>Service Groups\ARGSalesAgreeJourUpdateServiceGroup</Link>
+    </Content>
+    <Content Include="AxService\ARGSalesAgreeJourPostService">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourPostService</Name>
+      <Link>Services\ARGSalesAgreeJourPostService</Link>
+    </Content>
+    <Content Include="AxService\ARGSalesAgreeJourUpdateService">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourUpdateService</Name>
+      <Link>Services\ARGSalesAgreeJourUpdateService</Link>
+    </Content>
+    <Content Include="AxTable\ARGCustomBatchJobLog">
+      <SubType>Content</SubType>
+      <Name>ARGCustomBatchJobLog</Name>
+      <Link>ARGCustomBatchJobLog</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PostAgreeJournal" />
+    <Folder Include="UpdateAgreeJournals" />
+    <Folder Include="Services" />
+    <Folder Include="Service Groups" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
+</Project>

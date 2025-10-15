@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGPostalCodeLinesClass</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGPostalCodeLinesClass
+{
+    private str         route;
+    private str         company;
+    private int         hour;
+    private str         city;
+    private str         state;
+    private int         postalCode;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmRoute</Name>
+				<Source><![CDATA[
+    [DataMember("Route")]
+    public str parmRoute(str _value = route)
+    {
+        if (!prmIsDefault(_value))
+        {
+            route = _value;
+        }
+
+        return route;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCompany</Name>
+				<Source><![CDATA[
+    [DataMember("Company")]
+    public str parmCompany(str _value = company)
+    {
+        if (!prmIsDefault(_value))
+        {
+            company = _value;
+        }
+
+        return company;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmHour</Name>
+				<Source><![CDATA[
+    [DataMember("Hour")]
+    public int parmHour(int _value = hour)
+    {
+        if (!prmIsDefault(_value))
+        {
+            hour = _value;
+        }
+
+        return hour;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmCity</Name>
+				<Source><![CDATA[
+    [DataMember("City")]
+    public str parmCity(str _value = city)
+    {
+        if (!prmIsDefault(_value))
+        {
+            city = _value;
+        }
+
+        return city;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmState</Name>
+				<Source><![CDATA[
+    [DataMember("State")]
+    public str parmState(str _value = state)
+    {
+        if (!prmIsDefault(_value))
+        {
+            state = _value;
+        }
+
+        return state;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmPostalCode</Name>
+				<Source><![CDATA[
+    [DataMember("PostalCode")]
+    public int parmPostalCode(int _value = postalCode)
+    {
+        if (!prmIsDefault(_value))
+        {
+            postalCode = _value;
+        }
+
+        return postalCode;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

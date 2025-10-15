@@ -1,0 +1,2 @@
+﻿ARGShippingDisplay001=Posting type for shipping costs
+ ;Posting type for shipping costs

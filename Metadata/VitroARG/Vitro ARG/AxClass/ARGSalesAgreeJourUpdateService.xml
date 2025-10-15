@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesAgreeJourUpdateService</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGSalesAgreeJourUpdateService
+{
+    
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>updateSalesAgreementByCustomer</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Method for updating sales trade agreements by customer
+    /// </summary>
+    /// <param name = "_request"></param>
+    /// <returns></returns>
+    public ARGSalesAgreeJourUpdateResponse updateSalesAgreementByCustomer(ARGSalesAgreeJourUpdateRequest _request)
+    {
+        var response = new ARGSalesAgreeJourUpdateResponse();
+
+        changecompany(_request.parmDataAreaId())
+        {            
+            response = this.updateSalesTradeAgreementLineByCustomer(_request.parmSalesAgreeJourUpdateClass());
+                
+            return response;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateSalesTradeAgreementLineByCustomer</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Method to update sales trade agreement lines based on customer and product.
+    /// </summary>
+    /// <param name = "_salesAgreeJourUpdateClass"></param>
+    /// <returns></returns>
+    public ARGSalesAgreeJourUpdateResponse updateSalesTradeAgreementLineByCustomer(ARGSalesAgreeJourUpdateClass _salesAgreeJourUpdateClass)
+    {        
+        str                 customerAccount = _salesAgreeJourUpdateClass.parmCustomerAccount();
+        str                 itemId          = _salesAgreeJourUpdateClass.parmItemId();
+        PriceDiscAdmTrans   priceDiscAdmTrans;        
+        PriceDiscTable      priceDiscTable;
+        PriceDiscAdmTable   priceDiscAdm;        
+        ARGSalesAgreeJourUpdateResponse response = new ARGSalesAgreeJourUpdateResponse();
+        System.Exception ex;
+        ARGCustomBatchJobLog errorLog;
+
+        try
+        {
+        ttsbegin;
+
+            while select forUpdate priceDiscAdmTrans
+            where priceDiscAdmTrans.AccountRelation == customerAccount &&
+                  priceDiscAdmTrans.ItemRelation    == itemId &&
+                  priceDiscAdmTrans.ToDate          >= today()
+            join  priceDiscAdm
+            where priceDiscAdm.JournalNum           == priceDiscAdmTrans.JournalNum &&
+                  priceDiscAdm.Posted               == NoYes::Yes
+            {
+                
+                update_recordSet priceDiscTable
+                setting ToDate = today() - 1
+                    where priceDiscTable.AccountCode       == priceDiscAdmTrans.AccountCode
+                && priceDiscTable.AccountRelation   == priceDiscAdmTrans.AccountRelation
+                && priceDiscTable.ItemRelation      == priceDiscAdmTrans.ItemRelation
+                && priceDiscTable.ItemCode          == priceDiscAdmTrans.ItemCode
+                && priceDiscTable.Currency          == priceDiscAdmTrans.Currency
+                && priceDiscTable.InventDimId       == priceDiscAdmTrans.InventDimId
+                && priceDiscTable.UnitId            == priceDiscAdmTrans.UnitId
+                && priceDiscTable.relation          == PriceType::PriceSales                
+                && priceDiscTable.ToDate            >= today();
+                
+                priceDiscAdmTrans.ToDate = today() - 1;
+                priceDiscAdmTrans.update();
+
+                response.parmSuccess(true);
+                response.parmDebugMessage("Update successful");
+            }        
+        
+        ttscommit;
+        }
+        catch (Exception::CLRError)
+        {
+            System.Exception interopException = CLRInterop::getLastException();
+            response.parmSuccess(false);
+            response.parmErrorMessage(interopException.ToString());
+
+            errorLog.clear();
+            errorLog.CreatedByUser = curUserId();
+            errorLog.CreatedDateT = DateTimeUtil::getSystemDateTime();
+            errorLog.LogMessage = "Update of sale agreements by customer";
+            //errorLog.SalesOrder = _salesTable.SalesId;
+            errorLog.Description =  interopException.ToString();
+            errorLog.insert();
+        }
+            
+        return response;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateSalesAgreementByGroup</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Method for updating sales trade agreements by customer
+    /// </summary>
+    /// <param name = "_request"></param>
+    /// <returns></returns>
+    public ARGSalesAgreeJourUpdateResponse updateSalesAgreementByGroup(ARGSalesAgreeJourUpdateRequest _request)
+    {
+        var response = new ARGSalesAgreeJourUpdateResponse();
+        
+        changecompany(_request.parmDataAreaId())
+        {
+            response = this.updateSalesTradeAgreementLineByGroup(_request.parmSalesAgreeJourUpdateClass());
+                
+            return response;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>updateSalesTradeAgreementLineByGroup</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Method to update sales trade agreement lines based on customer and product.
+    /// </summary>
+    /// <param name = "_salesAgreeJourUpdateClass"></param>
+    /// <returns></returns>
+    public ARGSalesAgreeJourUpdateResponse updateSalesTradeAgreementLineByGroup(ARGSalesAgreeJourUpdateClass _salesAgreeJourUpdateClass)
+    {
+        str                 itemId           = _salesAgreeJourUpdateClass.parmItemId();
+        str                 groupId          = _salesAgreeJourUpdateClass.parmGroupId();
+        PriceDiscAdmTrans   priceDiscAdmTrans;
+        PriceDiscTable      priceDiscTable;
+        PriceDiscAdmTable   priceDiscAdm;
+        ARGSalesAgreeJourUpdateResponse response = new ARGSalesAgreeJourUpdateResponse();        
+        ARGCustomBatchJobLog errorLog;        
+        
+        try
+        {
+            ttsbegin;
+
+            while select forUpdate priceDiscAdmTrans
+            where priceDiscAdmTrans.AccountRelation == groupId &&
+                  priceDiscAdmTrans.ItemRelation    == itemId &&
+                  priceDiscAdmTrans.ToDate          == dateNull() // >= today();
+            join  priceDiscAdm
+            where priceDiscAdm.JournalNum           == priceDiscAdmTrans.JournalNum &&
+                  priceDiscAdm.Posted               == NoYes::Yes
+            {
+                
+                update_recordSet priceDiscTable
+                setting ToDate = today() - 1
+                    where priceDiscTable.AccountCode       == priceDiscAdmTrans.AccountCode
+                && priceDiscTable.AccountRelation   == priceDiscAdmTrans.AccountRelation
+                && priceDiscTable.ItemRelation      == priceDiscAdmTrans.ItemRelation
+                && priceDiscTable.ItemCode          == priceDiscAdmTrans.ItemCode
+                && priceDiscTable.Currency          == priceDiscAdmTrans.Currency
+                && priceDiscTable.InventDimId       == priceDiscAdmTrans.InventDimId
+                && priceDiscTable.UnitId            == priceDiscAdmTrans.UnitId
+                && priceDiscTable.relation          == PriceType::PriceSales
+                && priceDiscTable.ToDate            == dateNull();// >= today();
+
+                
+                priceDiscAdmTrans.ToDate = today() - 1;
+                priceDiscAdmTrans.update();
+
+                response.parmSuccess(true);
+                response.parmDebugMessage("Update successful");
+            }
+        
+            ttscommit;
+        }
+        catch (Exception::CLRError)
+        {
+            System.Exception interopException = CLRInterop::getLastException();
+            response.parmSuccess(false);
+            response.parmErrorMessage(interopException.ToString());
+
+            errorLog.clear();
+            errorLog.CreatedByUser = curUserId();
+            errorLog.CreatedDateT = DateTimeUtil::getSystemDateTime();
+            errorLog.LogMessage = "Update of sale agreements by group";
+            //errorLog.SalesOrder = _salesTable.SalesId;
+            errorLog.Description =  interopException.ToString();
+            errorLog.insert();
+        }
+
+        return response;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>JobCreateEventLog</Name>
+				<Source><![CDATA[
+    static void JobCreateEventLog(Args _args)
+    {
+        #define.LogSource("Dynamics AX")
+        #define.LogName("Dynamics AX Log")
+        System.Exception ex;
+        System.Diagnostics.EventLog eventLog;
+        ;
+        try
+        {
+            // Create the log if it does not already exist.
+            if (!System.Diagnostics.EventLog::SourceExists(#LogSource))
+            {
+                System.Diagnostics.EventLog::CreateEventSource(#LogSource, #LogName);
+            }
+
+            // Next line is an intentional bug for this demonstration of CLR exceptions.
+            // It causes an exception due to a name duplication.
+            System.Diagnostics.EventLog::CreateEventSource(#LogSource, #LogName);
+
+            // Write to this newly created log source, if the process gets this far.
+            eventLog = new System.Diagnostics.EventLog();
+            eventLog.set_Source(#LogSource);
+            eventLog.WriteEntry
+            ("The exception should prevent this line from appearing in the Windows event viewer.",
+            System.Diagnostics.EventLogEntryType::Warning
+            );
+        }
+        catch (Exception::CLRError)
+        {
+            ex = ClrInterop::getLastException();
+            if (ex != null)
+            {
+                ex = ex.get_InnerException();
+                if (ex != null)
+                {
+                    error(ex.ToString());
+                }
+            }
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

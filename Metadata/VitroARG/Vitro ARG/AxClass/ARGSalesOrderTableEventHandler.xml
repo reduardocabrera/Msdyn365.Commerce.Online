@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesOrderTableEventHandler</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGSalesOrderTableEventHandler
+{  
+     //<summary>
+     //</summary>
+     //<param name="sender"></param>
+     //<param name="e"></param>
+    //[DataEventHandler(tableStr(SalesTable), DataEventType::Inserted)]
+    //public static void SalesTable_onInserted(Common sender, DataEventArgs e)
+    //{
+    //    SalesTable salesTable = sender as SalesTable;
+    //    ARGSalesTable argSalesTable;        
+
+    //    ttsbegin;
+    //    argSalesTable.clear();
+    //    argSalesTable.SalesId = salesTable.SalesId;
+    //    argSalesTable.PlacedBy = SalesTable_Extension::PlacedBy(salesTable);
+    //    argSalesTable.PaymnMethod = SalesTable_Extension::PaymnMethod(salesTable);
+    //    argSalesTable.DlvMode = SalesTable_Extension::DlvMode(salesTable);
+    //    argSalesTable.ShippingCost = SalesTable_Extension::ShippingCost(salesTable);
+    //    argSalesTable.ShippingAddress = SalesTable_Extension::ShippingAddress(salesTable);
+    //    argSalesTable.TotalAmount = SalesTable_Extension::SalesOrderTotal(salesTable);
+    //    argSalesTable.ItemQuantity = SalesTable_Extension::ItemQuantityTotals(salesTable);        
+    //    argSalesTable.insert();
+    //    ttscommit;
+
+    //}
+
+
+    //<summary>
+    //</summary>
+    //<param name="sender"></param>
+    ////<param name="e"></param>
+    //[DataEventHandler(tableStr(ARGSalesTable), DataEventType::ModifiedField)]
+    //public static void ARGSalesTable_onModifiedField(Common sender, DataEventArgs e)
+    //{
+    //    ModifyFieldEventArgs    event = e as DataEventArgs;
+    //    FieldId                 fieldId = event.parmFieldId();        
+    //    ARGSalesTable           argSalesTable = sender as ARGSalesTable;
+    //    SalesTable              salesTable;
+
+    //    switch(fieldId)
+    //    {
+    //        case fieldNum(ARGSalesTable,OrderStatus):
+    //            if (argSalesTable.OrderStatus == "Invoiced")
+    //            {
+    //                salesTable = SalesTable::find(argSalesTable.SalesId);
+    //                argSalesTable.TotalAmount = SalesTable_Extension::SalesOrderTotal(salesTable);                    
+    //            }
+    //        break;
+    //    }
+    //}
+
+}
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+</AxClass>

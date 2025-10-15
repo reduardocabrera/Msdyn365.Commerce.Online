@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>Vitro ARG</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <DeployOnline>False</DeployOnline>
+    <ProjectGuid>{409e53d2-13a8-4cf9-9823-4f3b0cc54191}</ProjectGuid>
+    <Name>ARGUSASalesOrderInvoice</Name>
+    <RootNamespace>ARGUSASalesOrderInvoice</RootNamespace>
+    <StartupObject>ARGSalesOrderInvoiceCreationJob</StartupObject>
+    <StartupType>Class</StartupType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>True</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>
+    </Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Classes\" />
+    <Folder Include="Service Groups\" />
+    <Folder Include="Services\" />
+    <Folder Include="Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AxClass\ARGSalesAgreeJourUpdateJob">
+      <SubType>Content</SubType>
+      <Name>ARGSalesAgreeJourUpdateJob</Name>
+      <Link>Classes\ARGSalesAgreeJourUpdateJob</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesOrderInvoiceCreateClass">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderInvoiceCreateClass</Name>
+      <Link>Classes\ARGSalesOrderInvoiceCreateClass</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesOrderInvoiceCreateLineClass">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderInvoiceCreateLineClass</Name>
+      <Link>Classes\ARGSalesOrderInvoiceCreateLineClass</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesOrderInvoiceCreateRequest">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderInvoiceCreateRequest</Name>
+      <Link>Classes\ARGSalesOrderInvoiceCreateRequest</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesOrderInvoiceCreateResponse">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderInvoiceCreateResponse</Name>
+      <Link>Classes\ARGSalesOrderInvoiceCreateResponse</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesOrderInvoiceCreateService">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderInvoiceCreateService</Name>
+      <Link>Classes\ARGSalesOrderInvoiceCreateService</Link>
+    </Content>
+    <Content Include="AxClass\ARGSalesOrderInvoiceCreationJob">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderInvoiceCreationJob</Name>
+      <Link>Classes\ARGSalesOrderInvoiceCreationJob</Link>
+    </Content>
+    <Content Include="AxServiceGroup\ARGSalesOrderInvoiceCreateServiceGroup">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderInvoiceCreateServiceGroup</Name>
+      <Link>Service Groups\ARGSalesOrderInvoiceCreateServiceGroup</Link>
+    </Content>
+    <Content Include="AxService\ARGSalesOrderInvoiceCreateService">
+      <SubType>Content</SubType>
+      <Name>ARGSalesOrderInvoiceCreateService</Name>
+      <Link>Services\ARGSalesOrderInvoiceCreateService</Link>
+    </Content>
+    <Content Include="AxTable\ARGCustomBatchJobLog">
+      <SubType>Content</SubType>
+      <Name>ARGCustomBatchJobLog</Name>
+      <Link>Tables\ARGCustomBatchJobLog</Link>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
+</Project>

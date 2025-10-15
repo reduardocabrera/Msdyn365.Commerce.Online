@@ -1,0 +1,32 @@
+﻿NSalesOrder001=Total
+ ;Total
+NSalesOrder002=Número de artículos
+ ;Número de artículos
+NSalesOrder003=Código de aprobación
+ ;Código de aprobación
+NSalesOrder004=Id de Paytrace
+ ;Id de Paytrace
+NSalesOrder005=Número de orden de compra
+ ;Número de orden de compra
+NSalesOrder006=Estado del pedido
+ ;Estado del pedido
+NSalesOrder007=Número de pedido de SAP
+ ;Número de pedido de SAP
+NSalesOrder008=ID de entrega de SAP
+ ;ID de entrega de SAP
+NSalesOrder009=Número de seguimiento de OnTime
+ ;Número de seguimiento de OnTime
+NSalesOrder010=Id de OnTime
+ ;Id de OnTime
+NSalesOrder011=Dirección de envío
+ ;Dirección de envío
+NSalesOrder012=Costos de envío y manipulación
+ ;Costos de envío y manipulación
+NSalesOrder013=Modo de entrega
+ ;Modo de entrega
+NSalesOrder014=Método de pago
+ ;Método de pago
+NSalesOrder015=Colocado por
+ ;Colocado por
+NSalesOrder016=Reporte de ordenes de venta
+ ;Reporte de ordenes de venta

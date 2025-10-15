@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxLabelFile xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARG_ShippingCostDisplay_EC_en-US</Name>
+	<LabelContentFileName>ARG_ShippingCostDisplay_EC.en-US.label.txt</LabelContentFileName>
+	<LabelFileId>ARG_ShippingCostDisplay_EC</LabelFileId>
+	<RelativeUriInModelStore>VitroARG\Vitro ARG\AxLabelFile\LabelResources\en-US\ARG_ShippingCostDisplay_EC.en-US.label.txt</RelativeUriInModelStore>
+</AxLabelFile>

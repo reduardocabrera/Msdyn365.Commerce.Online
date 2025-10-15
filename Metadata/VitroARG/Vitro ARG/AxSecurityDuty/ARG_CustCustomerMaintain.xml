@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxSecurityDuty xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARG_CustCustomerMaintain</Name>
+	<Description>@SYS153775</Description>
+	<Label>@SYS153774</Label>
+	<Privileges>
+		<AxSecurityPrivilegeReference>
+			<Name>ARG_CustCustomization</Name>
+		</AxSecurityPrivilegeReference>
+	</Privileges>
+</AxSecurityDuty>

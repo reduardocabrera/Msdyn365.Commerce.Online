@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesOrderInvoiceCreateRequest</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGSalesOrderInvoiceCreateRequest
+{
+    private str dataAreaId;
+    ARGSalesOrderInvoiceCreateClass salesOrderInvoiceCreateClass;
+    List salesOrderInvoiceCreateLineClassArray;
+    
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmDataAreaId</Name>
+				<Source><![CDATA[
+    [DataMember("DataAreaId")]
+    public str parmDataAreaId(str _value = dataAreaId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            dataAreaId = _value;
+        }
+
+        return dataAreaId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmSalesOrderInvoiceCreateClass</Name>
+				<Source><![CDATA[
+    [DataMember("ARGSalesOrderInvoiceCreateClass")]
+    public ARGSalesOrderInvoiceCreateClass parmSalesOrderInvoiceCreateClass(ARGSalesOrderInvoiceCreateClass _salesOrderInvoiceCreateClass = salesOrderInvoiceCreateClass)
+    {
+        if (!prmIsDefault(_salesOrderInvoiceCreateClass))
+        {
+            salesOrderInvoiceCreateClass = _salesOrderInvoiceCreateClass;
+        }
+
+        return salesOrderInvoiceCreateClass;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmsalesOrderInvoiceCreateLineClassArray</Name>
+				<Source><![CDATA[
+    [DataMember("ARGSalesOrderInvoiceCreateLineClass"),
+    DataCollection(Types::Class, classStr(ARGSalesOrderInvoiceCreateLineClass)),
+    AifCollectionTypeAttribute('_SalesOrderInvoiceCreateLineClassArray', Types::Class, classStr(ARGSalesOrderInvoiceCreateLineClass)),
+    AifCollectionTypeAttribute('return', Types::Class, classStr(ARGSalesOrderInvoiceCreateLineClass))]
+    public List parmsalesOrderInvoiceCreateLineClassArray(List _salesOrderInvoiceCreateLineClassArray = salesOrderInvoiceCreateLineClassArray)
+    {
+        if (!prmIsDefault(_salesOrderInvoiceCreateLineClassArray))
+        {
+            salesOrderInvoiceCreateLineClassArray = _salesOrderInvoiceCreateLineClassArray;
+        }
+
+        return salesOrderInvoiceCreateLineClassArray;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxService xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesAgreeJourPostService</Name>
+	<Class>ARGSalesAgreeJourPostService</Class>
+	<ExternalName>ARGSalesAgreeJourPostService</ExternalName>
+	<ServiceOperations>
+		<AxServiceOperation>
+			<Name>postSalesTradeAgreement</Name>
+			<Method>postSalesTradeAgreement</Method>
+			<SubscriberAccessLevel>
+				<Read>Allow</Read>
+			</SubscriberAccessLevel>
+		</AxServiceOperation>
+	</ServiceOperations>
+</AxService>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesOrderInvoiceCreateLineClass</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGSalesOrderInvoiceCreateLineClass
+{   
+    private str itemId;
+    private int quantity;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmItemId</Name>
+				<Source><![CDATA[
+    [DataMember("ItemId")]
+    public str parmItemId(str _value = itemId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            itemId = _value;
+        }
+
+        return itemId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmQuantity</Name>
+				<Source><![CDATA[
+    [DataMember("Quantity")]
+    public int parmQuantity(int _value = quantity)
+    {
+        if (!prmIsDefault(_value))
+        {
+            quantity = _value;
+        }
+
+        return quantity;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

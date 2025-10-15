@@ -1,0 +1,2 @@
+﻿ARGShippingDisplay001=Tipo de contabilización para el costo de envío
+ ;Tipo de contabilización para el costo de envío

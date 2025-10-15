@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesAgreeJourUpdateJob</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class ARGSalesAgreeJourUpdateJob
+{
+}    
+    //public static void main(Args _args)
+    //{
+    //    Array lineitems = new Array(Types::String);
+    //    lineitems.value(1,"0162");
+    //    lineitems.value(2,"0163");
+    //    lineitems.value(3,"0164");
+
+    //    container SAPsalesLineReferences;
+    //    int i;
+
+    //    SalesFormLetter          salesFormLetter;
+    //    SalesParmLine            salesParmLine;
+    //    FormletterOutputContract outputContract;
+    //    WMSPickingRoute          wmsPickingRoute;
+
+    //    SalesTable salesTable;
+    //    SalesLine salesLine;
+    //    SalesId salesId = "012901"; // Replace with your actual SalesId
+
+
+    //    salesTable = salesTable::find(salesId);
+
+    //    for (i = 1; i <= lineitems.lastIndex(); i++)
+    //    {
+    //        select salesLine
+    //            where salesLine.SalesId == salesId
+    //            join salesTable
+    //            where salesTable.SalesId == salesLine.SalesId && salesLine.ItemId == lineitems.value(i);
+
+    //        SAPsalesLineReferences += salesLine.InventTransId;
+    //    }
+
+    //    // 1. Confirm selected lines
+    //    ttsbegin;
+    //    salesFormLetter = SalesFormLetter::construct(DocumentStatus::Confirmation);
+    //    salesFormLetter.update(salesTable, systemDateGet(), SalesUpdate::All);
+    //    ttscommit;
+    //    info("Confirmed");
+
+    //    // 2. Pick selected lines
+
+    //    ttsbegin;
+
+    //    salesFormLetter = SalesFormLetter::construct(DocumentStatus::PickingList);
+
+    //    salesFormLetter.salesTable(salesTable);
+    //    salesFormLetter.initParmSalesTable(salesFormLetter.salesTable());
+    //    salesFormLetter.transDate(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()));
+    //    salesFormLetter.specQty(SalesUpdate::All);
+    //    salesFormLetter.proforma(salesFormLetter.salesParmUpdate().Proforma);
+    //    salesFormLetter.printFormLetter(salesFormLetter.printFormLetter());
+    //    salesFormLetter.printCODLabel(NoYes::No);
+    //    salesFormLetter.printShippingLabel(NoYes::No);
+    //    salesFormLetter.usePrintManagement(false);
+    //    salesFormLetter.creditRemaining(salesFormLetter.creditRemaining());
+
+    //    salesFormLetter.createParmUpdateFromParmUpdateRecord(
+    //    SalesFormletterParmData::initSalesParmUpdateFormletter(
+    //                                    salesFormLetter.documentStatus(),
+    //                                    salesFormLetter.pack(),
+    //                                    true,
+    //                                    false,
+    //                                    false));
+
+    //    salesFormLetter.initParameters(
+    //                                  salesFormLetter.salesParmUpdate(),
+    //                                  Printout::Current);
+    //    salesFormLetter.initLinesQuery();
+
+    //    // Delete unwanted records in SalesParmLine
+    //    while select forupdate salesParmLine
+    //    where salesParmLine.ParmId == salesFormLetter.parmId()
+    //    {
+    //        if (conFind(SAPsalesLineReferences, salesParmLine.InventTransId) != 0)
+    //        {
+    //            salesParmLine.delete();
+    //        }
+    //        else
+    //        {
+    //            //if (SAPItemQuantity < HQquantity)
+    //            //{
+    //            //    salesParmLine.InventNow = HQuantity - SAPItemQuantity;
+    //            //}
+    //        }
+    //    }
+
+    //    salesFormLetter.run();
+
+    //    outputContract  = salesFormLetter.getOutputContract();
+    //    wmsPickingRoute = outputContract.parmJournal();
+    //    ttscommit;
+    //    //2.1 picking list registration
+    //    ttsbegin;
+    //    WMSPickingRouteID pickingRouteID = wmsPickingRoute.pickingRouteID;    // Route id to be picked
+
+    //    List list = new List(Types::String);
+
+    //    list.addEnd(pickingRouteID);
+
+    //    WMSPickingRoute::finishMulti(list.pack());   // Note - this is not in a single tts, so some routes might be posted and others fail
+
+    //    ttscommit;
+    //    info(strFmt("Selected lines of sales order %1 processed successfully.", salesId));
+
+
+    //    // 3. Pack selected lines--------------
+
+
+    //    //SalesTable _SalesTable;
+    //    CustPackingSlipJour custPackingSlipJour;
+    //    SalesFormLetter_PackingSlip     salesFormLetter_PackingSlip;
+    //    ttsbegin;
+    //    //salesTable = SalesTable::find("SO00125117");
+    //    if (salesTable)// && _SalesTable.SalesStatus == SalesStatus::Backorder)
+    //    {
+    //        salesFormLetter_PackingSlip = SalesFormLetter::construct(DocumentStatus::PackingSlip);
+    //        // Post the invoice
+    //        salesFormLetter_PackingSlip.update(salesTable, systemDateGet(), SalesUpdate::PickingList, AccountOrder::None, false, false); // Set to true to print the packingslip
+    //    }
+    //    if (salesFormLetter_PackingSlip.parmJournalRecord().TableId == tableNum(custPackingSlipJour))
+    //    {
+    //        custPackingSlipJour = salesFormLetter_PackingSlip.parmJournalRecord();
+    //        info(custPackingSlipJour.PackingSlipId);
+    //    }
+    //    ttsCommit;
+
+
+    //    // 4. Invoice selected lines
+    //    ttsbegin;
+    //    salesFormLetter = SalesFormLetter::construct(DocumentStatus::Invoice);
+    //    salesFormLetter.update(salesTable, systemDateGet(), SalesUpdate::PackingSlip);
+    //    ttscommit;
+    //    info("Invoiced");
+    //}
+
+
+       
+
+
+        //ttscommit;
+        //InventJournalTable  inventJournalTable;
+        //JournalCheckPost    journalCheckPost;
+        //str messages;
+
+        //str         result = "";
+        //container   infologContainer, infologMessage;
+        //int         i, messageCount;
+        //int         lastLine = infolog.line();
+        //str         msgText;
+        //int         messageType;
+        //BatchInfo   batchInfo;
+        //BatchHeader batchHeader;
+        //RecId       batchRecId;
+
+        //try
+        //{
+        //    while select inventJournalTable
+        //    where inventJournalTable.Posted == NoYes::No &&
+        //        inventJournalTable.DataAreaId == "USRT" &&
+        //        inventJournalTable.JournalId == "00171"
+        //    {
+        //        journalCheckPost = InventJournalCheckPost::newPostJournal(inventJournalTable);
+        //        journalCheckPost.parmThrowCheckFailed(false);
+        //        journalCheckPost.parmTransferErrors(NoYes::No);
+        //        journalCheckPost.run();   
+        //        //batchInfo = journalCheckPost.batchInfo();
+        //        //batchHeader = BatchHeader::getCurrentBatchHeader();
+        //        //batchRecId = batchHeader.parmBatchHeaderId();
+        //        break;
+        //    }
+        //    if (inventJournalTable.RecId != 0)
+        //    {   
+        //        Info(strFmt("Inventory journal: %1 successfully posted",inventJournalTable.JournalId));
+        //    }
+        //    else
+        //    {
+        //        Info("There's no inventory journals to be posted");
+        //    }
+        //    if (lastLine == 0)
+        //    {
+        //        info("No infolog messages.");
+        //    }
+
+        //    // Copy all messages from line 1 to the last line
+        //    infologContainer = infolog.copy(1, lastLine);
+        //    messageCount = conlen(infologContainer);
+
+        //    for (i = 1; i <= messageCount; i++)
+        //    {
+        //        infologMessage = conpeek(infologContainer, i);
+        //        messageType = conpeek(infologMessage, 1); // The first element is message type
+        //        msgText = conpeek(infologMessage, 2);     // The second element is the message text
+
+        //        // Append each message followed by a newline
+        //        // If you plan to send via email or store in a table, this formatting can be adjusted
+        //        result += msgText + "\r\n";
+        //    }
+        //    info(result);
+        //}
+        //catch (Exception::CLRError)
+        //{
+        //    System.Exception interopException = CLRInterop::getLastException();
+
+        //    Info(interopException.ToString());
+        //}
+        //catch (Exception::CLRError)
+        //{
+        //    System.Exception interopException = CLRInterop::getLastException();
+
+        //    response.parmSuccess(false);
+        //    response.parmErrorMessage(interopException.ToString());
+        //}
+        //return response;
+    
+
+    //public str retrieveInfologMessages()
+    //{
+    //    str         result = "";
+    //    container   infologContainer, infologMessage;
+    //    int         i, messageCount;
+    //    int         lastLine = infolog.line();
+    //    str         msgText;
+    //    int         messageType;
+
+    //    if (lastLine == 0)
+    //    {
+    //        return "No infolog messages.";
+    //    }
+
+    //    // Copy all messages from line 1 to the last line
+    //    infologContainer = infolog.copy(1, lastLine);
+    //    messageCount = conlen(infologContainer);
+
+    //    for (i = 1; i <= messageCount; i++)
+    //    {
+    //        infologMessage = conpeek(infologContainer, i);
+    //        messageType = conpeek(infologMessage, 1); // The first element is message type
+    //        msgText = conpeek(infologMessage, 2);     // The second element is the message text
+
+    //        // Append each message followed by a newline
+    //        // If you plan to send via email or store in a table, this formatting can be adjusted
+    //        result += msgText + "\r\n";
+    //    }
+
+    //    return result;
+    //}
+
+    //public static void storeMessagesInTable(RecId _batchJobRecId)
+    //{
+    //    ARGCustomBatchJobLog logRecord;
+    //    str messages = retrieveInfologMessages();
+    //    container lines = strSplit(messages, "\r\n"); // Split into separate messages if needed
+    //    int lineCount = conlen(lines);
+    //    int i;
+
+    //    for (i = 1; i <= lineCount; i++)
+    //    {
+    //        str singleMessage = conpeek(lines, i);
+    //        if (singleMessage != "")
+    //        {
+    //            logRecord.clear();
+    //            logRecord.BatchJobId = _batchJobRecId;
+    //            logRecord.LogMessage = singleMessage;                
+    //            logRecord.insert();
+    //        }
+    //    }
+    //}
+
+    //    PriceDiscAdmTrans   priceDiscAdmTrans;
+    //    PriceDiscTable      priceDiscTable;
+    //    PriceDiscAdmTable   priceDiscAdm;
+    //    ARGSalesAgreeJourUpdateResponse response = new ARGSalesAgreeJourUpdateResponse();
+
+    //    ttsbegin;
+
+    //    while select forUpdate priceDiscAdmTrans
+    //        where priceDiscAdmTrans.AccountRelation == "AW40" &&
+    //              priceDiscAdmTrans.ItemRelation    == "WAR-00001"
+    //        join  priceDiscAdm
+    //        where priceDiscAdm.JournalNum           == priceDiscAdmTrans.JournalNum &&
+    //              priceDiscAdm.Posted               == NoYes::Yes
+    //    {
+
+    //        update_recordSet priceDiscTable
+    //            setting ToDate = today() - 1
+    //                where priceDiscTable.AccountCode       == priceDiscAdmTrans.AccountCode
+    //            && priceDiscTable.AccountRelation   == priceDiscAdmTrans.AccountRelation
+    //            && priceDiscTable.ItemRelation      == priceDiscAdmTrans.ItemRelation
+    //            && priceDiscTable.ItemCode          == priceDiscAdmTrans.ItemCode
+    //            && priceDiscTable.Currency          == priceDiscAdmTrans.Currency
+    //            && priceDiscTable.InventDimId       == priceDiscAdmTrans.InventDimId
+    //            && priceDiscTable.UnitId            == priceDiscAdmTrans.UnitId
+    //            && priceDiscTable.relation          == PriceType::PriceSales;
+
+    //            priceDiscAdmTrans.ToDate = today() - 1;
+    //        priceDiscAdmTrans.update();
+
+    //        response.parmSuccess(true);
+    //        response.parmErrorMessage("Update successful");
+    //    }
+
+    //    ttscommit;
+
+    //}
+
+//}//        PriceDiscAdmCheckPost   priceDiscAdmCheckPost = new PriceDiscAdmCheckPost(false);//To make sure posting is happen
+//        //ARGSalesAgreeJourPostResponse response = new ARGSalesAgreeJourPostResponse();
+
+//        try
+//        {
+//            priceDiscAdmCheckPost.initJournalNum("PDJ-00792");
+//            priceDiscAdmCheckPost.run();
+
+//            info("Trade agreement: PDJ-00792 successfully posted");
+//        }
+//        catch (Exception::CLRError)
+//        {
+//            System.Exception interopException = CLRInterop::getLastException();
+
+//            info(interopException.ToString());
+//        }
+//    }
+
+//}
+        //str                 customerAccount = "004005";
+        //str                 itemId          = "WAR-00002";
+        //str                 groupId         = "AWSJ";
+        //PriceDiscAdmTrans   priceDiscAdmTrans;
+        //PriceDiscTable      priceDiscTable;
+        //PriceDiscAdmTable   priceDiscAdm;
+        //ARGSalesAgreeJourUpdateResponse response = new ARGSalesAgreeJourUpdateResponse();
+        //try
+        //{
+        //    ttsbegin;
+
+        //    while select forUpdate priceDiscAdmTrans
+        //    where priceDiscAdmTrans.AccountRelation == groupId &&
+        //          priceDiscAdmTrans.ItemRelation    == itemId &&
+        //          priceDiscAdmTrans.ToDate          >= today()
+        //    join  priceDiscAdm
+        //    where priceDiscAdm.JournalNum           == priceDiscAdmTrans.JournalNum &&
+        //          priceDiscAdm.Posted               == NoYes::Yes
+        //    {
+
+        //        update_recordSet priceDiscTable
+        //        setting ToDate = today() - 1
+        //            where priceDiscTable.AccountCode       == priceDiscAdmTrans.AccountCode
+        //        && priceDiscTable.AccountRelation   == priceDiscAdmTrans.AccountRelation
+        //        && priceDiscTable.ItemRelation      == priceDiscAdmTrans.ItemRelation
+        //        && priceDiscTable.ItemCode          == priceDiscAdmTrans.ItemCode
+        //        && priceDiscTable.Currency          == priceDiscAdmTrans.Currency
+        //        && priceDiscTable.InventDimId       == priceDiscAdmTrans.InventDimId
+        //        && priceDiscTable.UnitId            == priceDiscAdmTrans.UnitId
+        //        && (priceDiscTable.relation         == PriceType::PricePurch || priceDiscTable.relation == PriceType::PriceSales)
+        //        && priceDiscTable.ToDate            >= today();
+
+        //        priceDiscAdmTrans.ToDate = today() - 1;
+        //        priceDiscAdmTrans.update();
+
+        //        response.parmSuccess(true);
+        //        response.parmErrorMessage("Update successful");
+        //        info(response.parmErrorMessage());
+        //    }
+
+        //    ttscommit;
+        //}
+        //catch (Exception::UpdateConflict)
+        //{
+        //    throw Exception::UpdateConflict;
+        //}
+        //catch (Exception::CLRError)
+        //{
+        //    throw Exception::CLRError;
+        //}
+        //catch
+        //{
+        //    response.parmSuccess(false);
+
+        //    SysInfologEnumerator    enumerator;
+        //    SysInfologMessageStruct msgStruct;
+        //    Exception               exception;
+        //    str                     error;
+
+        //    enumerator = SysInfologEnumerator::newData(infolog.cut());
+
+        //    while (enumerator.moveNext())
+        //    {
+        //        msgStruct = new SysInfologMessageStruct(enumerator.currentMessage());
+        //        exception = enumerator.currentException();
+        //        error = strfmt("@SYS82282"+ ' '+"@MCR26302", error, msgStruct.message());
+        //    }
+
+        //    response.parmErrorMessage(error);
+        //    info(response.parmErrorMessage());
+        //}
+        
+    
+
+    ///// <summary>
+    ///// Method to capture the standard error and send it the perticular catch of the method.
+    ///// </summary>
+    ///// <returns>error</returns>
+    //public static str getErrorStr()
+    //{
+    //    SysInfologEnumerator    enumerator;
+    //    SysInfologMessageStruct msgStruct;
+    //    Exception               exception;
+    //    str                     error;
+
+    //    enumerator = SysInfologEnumerator::newData(infolog.cut());
+
+    //    while (enumerator.moveNext())
+    //    {
+    //        msgStruct = new SysInfologMessageStruct(enumerator.currentMessage());
+    //        exception = enumerator.currentException();
+    //        error = strfmt("@SYS82282"+ ' '+"@MCR26302", error, msgStruct.message());
+    //    }
+
+    //    return error;
+    //}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    public static void main(Args _args)
+    {
+        SalesId salesId= "013576";
+        SalesTable salesTable = SalesTable::find(salesId);
+        SalesFormLetter salesFormLetter;
+        container salesLineReferences;
+        List SAPItemsQtys = new List(Types::String);
+        ARGSalesOrderInvoiceCreateLineClass auxSalesOrderInvoiceLineClass;
+        ARGSalesOrderInvoiceCreateResponse invoiceResponse;
+
+        Set seSAPItems = new Set(Types::String);
+
+        List lines = new List(Types::String);
+        ListIterator   literator;
+        str salesInvoiceLine;
+        int i;
+        SalesLine salesLine;
+
+        SalesParmLine               salesParmLine;
+        FormletterOutputContract    outputContract;
+        WMSPickingRoute             wmsPickingRoute;
+        //ListIterator                literator;
+        Set                         seItemsHQ = new set(Types::String);//contains the products that are in the HQ sales order
+        Set                         missingItems;
+        SetEnumerator               se;
+        str sapItemsData;
+        int res = 0;
+        str                         item;
+
+        //Create lines
+        //lines = _request.parmsalesOrderInvoiceCreateLineClassArray();
+        lines.addEnd("0162");
+        lines.addEnd("0163");
+        //lines.addEnd("0164");
+
+        Info("Empieza");
+        if (lines)
+        {
+            literator = new ListIterator(lines);
+            while (literator.more())
+            {
+                salesInvoiceLine = literator.value();
+
+                select salesLine
+                            where salesLine.SalesId == salesId
+                            join salesTable
+                    where salesTable.SalesId == salesLine.SalesId && salesLine.ItemId == salesInvoiceLine;
+
+                seSAPItems.add(salesLine.InventTransId);
+
+                SAPItemsQtys.addEnd(salesLine.ItemId);
+                SAPItemsQtys.addEnd(int2Str(5));
+                        
+                literator.next();
+            }
+        }
+
+        ttsbegin;
+        salesFormLetter = SalesFormLetter::construct(DocumentStatus::Confirmation);
+        salesFormLetter.update(salesTable, systemDateGet(), SalesUpdate::All);
+        ttscommit;
+
+        //ttsbegin;
+        //salesFormLetter = SalesFormLetter::construct(DocumentStatus::PickingList);
+
+        //salesFormLetter.salesTable(salesTable);
+        //salesFormLetter.initParmSalesTable(salesFormLetter.salesTable());
+        //salesFormLetter.transDate(DateTimeUtil::getSystemDate(DateTimeUtil::getUserPreferredTimeZone()));
+        //salesFormLetter.specQty(SalesUpdate::All);
+        //salesFormLetter.proforma(salesFormLetter.salesParmUpdate().Proforma);
+        //salesFormLetter.printFormLetter(salesFormLetter.printFormLetter());
+        //salesFormLetter.printCODLabel(NoYes::No);
+        //salesFormLetter.printShippingLabel(NoYes::No);
+        //salesFormLetter.usePrintManagement(false);
+        //salesFormLetter.creditRemaining(salesFormLetter.creditRemaining());
+
+        //salesFormLetter.createParmUpdateFromParmUpdateRecord(
+        //SalesFormletterParmData::initSalesParmUpdateFormletter(
+        //                                salesFormLetter.documentStatus(),
+        //                                salesFormLetter.pack(),
+        //                                true,
+        //                                false,
+        //                                false));
+
+        //salesFormLetter.initParameters(salesFormLetter.salesParmUpdate(),
+        //                              Printout::Current);
+        //salesFormLetter.initLinesQuery();
+
+        //// Delete unwanted records in SalesParmLine
+        //while select forupdate salesParmLine
+        //    where salesParmLine.ParmId == salesFormLetter.parmId() && salesParmLine.OrigSalesId == salesId
+        //{
+        //    seItemsHQ.add(salesParmLine.InventTransId);
+        //    if (SAPItemsQtys)
+        //    {
+        //        literator = new ListIterator(SAPItemsQtys);
+        //        while (literator.more())
+        //        {
+        //            //itemid
+        //            sapItemsData = literator.value();
+
+        //            if (SAPItemsData == salesParmLine.InventTransId)
+        //            {
+        //                //qty
+        //                literator.next();
+        //                sapItemsData = literator.value();
+
+        //                //if (str2Int(sapItemsData) != real2int(salesParmLine.InventNow))
+        //                //{
+        //                //    res = real2int(salesParmLine.InventNow) - str2Int(sapItemsData);
+        //                    salesParmLine.InventNow = str2Int(sapItemsData);
+        //                    salesParmLine.update();
+        //                //}
+        //                break;
+        //            }
+        //            literator.next();
+        //        }
+        //    }
+        //}
+        //missingItems = Set::difference(seItemsHQ,seSAPItems);
+
+        //while select forupdate salesParmLine
+        //    where salesParmLine.ParmId == salesFormLetter.parmId() && salesParmLine.OrigSalesId == salesId
+        //{
+        //    se = missingItems.getEnumerator();
+        //    while(se.moveNext())
+        //    {
+        //        item = se.current();
+        //        if (item == salesParmLine.InventTransId)
+        //        {
+        //            salesParmLine.delete();
+        //        }
+        //    }
+        //}
+
+        //salesFormLetter.run();
+
+        //outputContract  = salesFormLetter.getOutputContract();
+        //wmsPickingRoute = outputContract.parmJournal();
+        //ttscommit;
+
+        //ttsbegin;
+        //WMSPickingRouteID pickingRouteID = wmsPickingRoute.pickingRouteID;    // Route id to be picked
+
+        //List list = new List(Types::String);
+
+        //list.addEnd(pickingRouteID);
+
+        //WMSPickingRoute::finishMulti(list.pack());   // Note - this is not in a single tts, so some routes might be posted and others fail
+
+        //ttscommit;
+
+        CustPackingSlipJour custPackingSlipJour;
+        SalesFormLetter_PackingSlip     salesFormLetter_PackingSlip;      
+        
+
+        ttsbegin;
+
+        literator = new ListIterator(SAPItemsQtys);
+        while (literator.more())
+        {
+            sapItemsData = literator.value();
+
+            select firstonly salesLine
+            where salesLine.SalesId == salesTable.SalesId && salesLine.ItemId == sapItemsData;
+            
+            if (salesLine)
+            {
+                salesLine = SalesLine::find(salesId,salesLine.LineNum,true);
+                literator.next();
+                sapItemsData = literator.value();
+
+                salesLine.SalesDeliverNow = str2Int(sapItemsData);
+                salesLine.setInventDeliverNow();
+                salesLine.doUpdate();                
+            }
+            literator.next();
+            
+        }
+
+        salesFormLetter_PackingSlip = SalesFormLetter::construct(DocumentStatus::PackingSlip);
+        // Post the invoice
+        salesFormLetter_PackingSlip.update(salesTable, systemDateGet(), SalesUpdate::DeliverNow, AccountOrder::None, false, false); // Set to true to print the packingslip
+
+        
+        if (salesFormLetter_PackingSlip.parmJournalRecord().TableId == tableNum(custPackingSlipJour))
+        {
+            custPackingSlipJour = salesFormLetter_PackingSlip.parmJournalRecord();
+            info(custPackingSlipJour.PackingSlipId);
+        }
+        ttsCommit;
+
+        ttsbegin;
+        salesFormLetter = SalesFormLetter::construct(DocumentStatus::Invoice);
+        salesFormLetter.update(salesTable, systemDateGet(), SalesUpdate::PackingSlip);
+        info(strFmt("sales: %1 invoiced",salesId));
+        ttscommit;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

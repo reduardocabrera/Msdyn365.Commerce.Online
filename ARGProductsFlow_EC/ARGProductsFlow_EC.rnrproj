@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>Vitro ARG</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <DeployOnline>False</DeployOnline>
+    <ProjectGuid>{58897cf3-96ea-4960-8308-5c899e157264}</ProjectGuid>
+    <Name>ARGProductsFlow_EC</Name>
+    <RootNamespace>ARGProductsFlow_EC</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>True</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>
+    </Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Action Menu Items\" />
+    <Folder Include="Classes\" />
+    <Folder Include="Label Files\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AxClass\CustomProductsFlowARG_Contract">
+      <SubType>Content</SubType>
+      <Name>CustomProductsFlowARG_Contract</Name>
+      <Link>Classes\CustomProductsFlowARG_Contract</Link>
+    </Content>
+    <Content Include="AxClass\CustomProductsFlowARG_Controller">
+      <SubType>Content</SubType>
+      <Name>CustomProductsFlowARG_Controller</Name>
+      <Link>Classes\CustomProductsFlowARG_Controller</Link>
+    </Content>
+    <Content Include="AxClass\CustomProductsFlowARG_Service">
+      <SubType>Content</SubType>
+      <Name>CustomProductsFlowARG_Service</Name>
+      <Link>Classes\CustomProductsFlowARG_Service</Link>
+    </Content>
+    <Content Include="AxLabelFile\CustomProductsFlowARGLabel_en-US">
+      <SubType>Content</SubType>
+      <Name>CustomProductsFlowARGLabel_en-US</Name>
+      <Link>Label Files\CustomProductsFlowARGLabel_en-US</Link>
+    </Content>
+    <Content Include="AxLabelFile\CustomProductsFlowARGLabel_es-MX">
+      <SubType>Content</SubType>
+      <Name>CustomProductsFlowARGLabel_es-MX</Name>
+      <Link>Label Files\CustomProductsFlowARGLabel_es-MX</Link>
+    </Content>
+    <Content Include="AxMenuItemAction\CustomProductsFlowARGAction">
+      <SubType>Content</SubType>
+      <Name>CustomProductsFlowARGAction</Name>
+      <Link>Action Menu Items\CustomProductsFlowARGAction</Link>
+    </Content>
+    <Content Include="CustomProductsFlowARGLabel.en-US.label.txt">
+      <SubType>Content</SubType>
+      <Name>CustomProductsFlowARGLabel.en-US.label.txt</Name>
+      <DependentUpon>AxLabelFile\CustomProductsFlowARGLabel_en-US</DependentUpon>
+    </Content>
+    <Content Include="CustomProductsFlowARGLabel.es-MX.label.txt">
+      <SubType>Content</SubType>
+      <Name>CustomProductsFlowARGLabel.es-MX.label.txt</Name>
+      <DependentUpon>AxLabelFile\CustomProductsFlowARGLabel_es-MX</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
+</Project>

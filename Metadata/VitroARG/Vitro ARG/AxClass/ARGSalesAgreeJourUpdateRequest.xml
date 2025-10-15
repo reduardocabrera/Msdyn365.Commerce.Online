@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGSalesAgreeJourUpdateRequest</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGSalesAgreeJourUpdateRequest
+{
+    private str dataAreaId;
+    ARGSalesAgreeJourUpdateClass salesAgreeJourUpdateClass;
+    
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmDataAreaId</Name>
+				<Source><![CDATA[
+    [DataMember("DataAreaId")]
+    public str parmDataAreaId(str _value = dataAreaId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            dataAreaId = _value;
+        }
+
+        return dataAreaId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmSalesAgreeJourUpdateClass</Name>
+				<Source><![CDATA[
+    [DataMember("ARGSalesAgreeJourUpdateClass")]
+    public ARGSalesAgreeJourUpdateClass parmSalesAgreeJourUpdateClass(ARGSalesAgreeJourUpdateClass _salesAgreeJourUpdateClass = salesAgreeJourUpdateClass)
+    {
+        if (!prmIsDefault(_salesAgreeJourUpdateClass))
+        {
+            salesAgreeJourUpdateClass = _salesAgreeJourUpdateClass;
+        }
+
+        return salesAgreeJourUpdateClass;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

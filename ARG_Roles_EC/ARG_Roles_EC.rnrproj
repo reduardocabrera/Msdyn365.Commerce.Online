@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>Vitro ARG</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <DeployOnline>False</DeployOnline>
+    <ProjectGuid>{c3f39f09-8d3f-4153-95ff-cea4b624b960}</ProjectGuid>
+    <Name>ARG_Roles_EC</Name>
+    <RootNamespace>ARG_Roles_EC</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>True</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>
+    </Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Label Files\" />
+    <Folder Include="Security Duties\" />
+    <Folder Include="Security Privileges\" />
+    <Folder Include="Security Roles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ARG_Roles.en-US.label.txt">
+      <SubType>Content</SubType>
+      <Name>ARG_Roles.en-US.label.txt</Name>
+      <DependentUpon>AxLabelFile\ARG_Roles_en-US</DependentUpon>
+    </Content>
+    <Content Include="ARG_Roles.es-MX.label.txt">
+      <SubType>Content</SubType>
+      <Name>ARG_Roles.es-MX.label.txt</Name>
+      <DependentUpon>AxLabelFile\ARG_Roles_es-MX</DependentUpon>
+    </Content>
+    <Content Include="AxLabelFile\ARG_Roles_en-US">
+      <SubType>Content</SubType>
+      <Name>ARG_Roles_en-US</Name>
+      <Link>Label Files\ARG_Roles_en-US</Link>
+    </Content>
+    <Content Include="AxLabelFile\ARG_Roles_es-MX">
+      <SubType>Content</SubType>
+      <Name>ARG_Roles_es-MX</Name>
+      <Link>Label Files\ARG_Roles_es-MX</Link>
+    </Content>
+    <Content Include="AxSecurityDuty\ARG_CustCustomerMaintain">
+      <SubType>Content</SubType>
+      <Name>ARG_CustCustomerMaintain</Name>
+      <Link>Security Duties\ARG_CustCustomerMaintain</Link>
+    </Content>
+    <Content Include="AxSecurityDuty\ARG_ReturnSalesReturnOrderMaintain">
+      <SubType>Content</SubType>
+      <Name>ARG_ReturnSalesReturnOrderMaintain</Name>
+      <Link>Security Duties\ARG_ReturnSalesReturnOrderMaintain</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\ARG_CustCustomization">
+      <SubType>Content</SubType>
+      <Name>ARG_CustCustomization</Name>
+      <Link>Security Privileges\ARG_CustCustomization</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\ARG_SalesCustomization">
+      <SubType>Content</SubType>
+      <Name>ARG_SalesCustomization</Name>
+      <Link>Security Privileges\ARG_SalesCustomization</Link>
+    </Content>
+    <Content Include="AxSecurityRole\ARG_CSRRole">
+      <SubType>Content</SubType>
+      <Name>ARG_CSRRole</Name>
+      <Link>Security Roles\ARG_CSRRole</Link>
+    </Content>
+    <Content Include="AxSecurityRole\ARG_Warehouseman">
+      <SubType>Content</SubType>
+      <Name>ARG_Warehouseman</Name>
+      <Link>Security Roles\ARG_Warehouseman</Link>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.17.0.targets" />
+</Project>

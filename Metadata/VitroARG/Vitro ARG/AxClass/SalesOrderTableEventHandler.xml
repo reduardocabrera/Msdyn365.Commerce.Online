@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>SalesOrderTableEventHandler</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+internal final class SalesOrderTableEventHandler
+{
+    
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>SalesOrderTable_Post_insert</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Post-event handler for SalesTable insert operation
+    /// </summary>
+    /// <param name="args"></param>
+    [PostHandlerFor(tableStr(SalesTable), tableMethodStr(SalesTable, insert))]
+    public static void SalesOrderTable_Post_insert(XppPrePostArgs args)
+    {
+        SalesTable salesTable = args.getThis() as SalesTable;
+        ARGSalesTable argSalesTable;
+
+        if (salesTable)
+        {
+            ttsbegin;
+            argSalesTable.clear();
+            argSalesTable.SalesId = salesTable.SalesId;
+            argSalesTable.PlacedBy = SalesTable_Extension::PlacedBy(salesTable);
+            argSalesTable.PaymnMethod = SalesTable_Extension::PaymnMethod(salesTable);
+            argSalesTable.DlvMode = SalesTable_Extension::DlvMode(salesTable);
+            argSalesTable.ShippingCost = SalesTable_Extension::ShippingCost(salesTable);
+            argSalesTable.ShippingAddress = SalesTable_Extension::ShippingAddress(salesTable);
+            argSalesTable.TotalAmount = SalesTable_Extension::SalesOrderTotal(salesTable);
+            argSalesTable.ItemQuantity = SalesTable_Extension::ItemQuantityTotals(salesTable);
+            argSalesTable.insert();
+            ttscommit;
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>SalesTable_Post_update</Name>
+				<Source><![CDATA[
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="args"></param>
+    [PostHandlerFor(tableStr(SalesTable), tableMethodStr(SalesTable, update))]
+    public static void SalesTable_Post_update(XppPrePostArgs args)
+    {
+        SalesTable salesTable = args.getThis() as SalesTable;
+        ARGSalesTable argSalesTable;
+
+        select forupdate firstonly argSalesTable 
+            where argSalesTable.SalesId == salesTable.SalesId;
+
+        if (argSalesTable)
+        {
+            ttsbegin;
+            argSalesTable.PaymnMethod = SalesTable_Extension::PaymnMethod(salesTable);            
+            argSalesTable.ItemQuantity = SalesTable_Extension::ItemQuantityTotals(salesTable);
+            argSalesTable.TotalAmount = SalesTable_Extension::SalesOrderTotal(salesTable);
+            argSalesTable.update();
+            ttscommit;
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>ARGInvAdjPostRequest</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+internal final class ARGInvAdjPostRequest
+{
+    private str dataAreaId;
+    ARGInvAdjPostClass invAdjPostClass;
+    
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmDataAreaId</Name>
+				<Source><![CDATA[
+    [DataMember("DataAreaId")]
+    public str parmDataAreaId(str _value = dataAreaId)
+    {
+        if (!prmIsDefault(_value))
+        {
+            dataAreaId = _value;
+        }
+
+        return dataAreaId;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>parmInvAdjPostClass</Name>
+				<Source><![CDATA[
+    [DataMember("ARGInvAdjPostClass")]
+    public ARGInvAdjPostClass parmInvAdjPostClass(ARGInvAdjPostClass _InvAdjPostClass = invAdjPostClass)
+    {
+        if (!prmIsDefault(_InvAdjPostClass))
+        {
+            invAdjPostClass = _InvAdjPostClass;
+        }
+
+        return invAdjPostClass;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
