@@ -30,61 +30,6 @@ IF NOT EXIST "%AOS_PACKAGES_DIR%" (
     exit /b 1
 )
 
-echo ============================================
-echo   STEP 1: Stop services
-echo ============================================
-
-REM Check if services exist before stopping
-sc query DynamicsAXBatch >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    echo Stopping DynamicsAXBatch service...
-    net stop DynamicsAXBatch /y
-    timeout /t 5 /nobreak >nul
-) else (
-    echo DynamicsAXBatch service not found (may already be stopped)
-)
-
-sc query w3svc >nul 2>&1
-if %ERRORLEVEL% EQU 0 (
-    echo Stopping IIS (w3svc) service...
-    net stop w3svc /y
-    timeout /t 5 /nobreak >nul
-) else (
-    echo w3svc service not found (may already be stopped)
-)
-
-REM Force kill stuck batch service if needed
-for /f "tokens=2" %%i in ('sc queryex DynamicsAXBatch ^| findstr PID') do (
-    set PID=%%i
-)
-if defined PID (
-    if !PID! NEQ 0 (
-        echo Warning: DynamicsAXBatch still running with PID !PID!, force stopping...
-        taskkill /f /pid !PID! >nul 2>&1
-        timeout /t 3 /nobreak >nul
-    )
-)
-
-echo.
-echo ============================================
-echo   STEP 2: Clone repository (if not exists)
-echo ============================================
-
-IF EXIST "%TARGET_DIR%" (
-    echo Directory %TARGET_DIR% already exists. Skipping clone.
-    echo Pulling latest changes instead...
-    pushd "%TARGET_DIR%"
-    git pull
-    popd
-) ELSE (
-    echo Cloning repository to %TARGET_DIR%...
-    gh repo clone sieena/vitro-arg-commerce "%TARGET_DIR%"
-    if %ERRORLEVEL% NEQ 0 (
-        echo ERROR: Failed to clone repository.
-        echo Make sure GitHub CLI is installed and authenticated.
-        goto :cleanup
-    )
-)
 
 echo.
 echo ============================================
