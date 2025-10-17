@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
-    <Model>DefinityOperations</Model>
+    <Model>Vitro ARG</Model>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <OutputPath>bin</OutputPath>
     <SchemaVersion>2.0</SchemaVersion>
@@ -15,6 +15,7 @@
     <ProjectGuid>{89b81e67-a6e7-47c2-82e2-47905f784bdc}</ProjectGuid>
     <Name>ARG_HttpClientSAP_EC</Name>
     <RootNamespace>ARG_HttpClientSAP_EC</RootNamespace>
+    <StartupType>Class</StartupType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <Configuration>Debug</Configuration>
@@ -35,10 +36,40 @@
     <Folder Include="Classes\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AxClass\CallResAPIPostIV">
+      <SubType>Content</SubType>
+      <Name>CallResAPIPostIV</Name>
+      <Link>Classes\CallResAPIPostIV</Link>
+    </Content>
     <Content Include="AxClass\callRestAPIPost">
       <SubType>Content</SubType>
       <Name>callRestAPIPost</Name>
       <Link>Classes\callRestAPIPost</Link>
+    </Content>
+    <Content Include="AxClass\CallRestAPIPostII">
+      <SubType>Content</SubType>
+      <Name>CallRestAPIPostII</Name>
+      <Link>Classes\CallRestAPIPostII</Link>
+    </Content>
+    <Content Include="AxClass\CallRestAPIPostIII">
+      <SubType>Content</SubType>
+      <Name>CallRestAPIPostIII</Name>
+      <Link>Classes\CallRestAPIPostIII</Link>
+    </Content>
+    <Content Include="AxClass\CallRestAPIPostV">
+      <SubType>Content</SubType>
+      <Name>CallRestAPIPostV</Name>
+      <Link>Classes\CallRestAPIPostV</Link>
+    </Content>
+    <Content Include="AxClass\IntegrationConstans">
+      <SubType>Content</SubType>
+      <Name>IntegrationConstans</Name>
+      <Link>Classes\IntegrationConstans</Link>
+    </Content>
+    <Content Include="AxClass\JsonContractAPI">
+      <SubType>Content</SubType>
+      <Name>JsonContractAPI</Name>
+      <Link>Classes\JsonContractAPI</Link>
     </Content>
     <Content Include="AxClass\TestCallAPI">
       <SubType>Content</SubType>
